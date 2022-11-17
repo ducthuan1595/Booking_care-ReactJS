@@ -1,0 +1,30 @@
+.container {
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    background-color: #16d7d7 !important;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .btn-manage {
+    span:first-child {
+      color: #162cd7;
+    }
+    span:last-child {
+      color: #e76c38;
+      margin-left: 14px;
+    }
+  }
+}

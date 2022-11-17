@@ -30,6 +30,7 @@
     .login-content {
       text-align: center;
       margin: 0 12px;
+      position: relative;
       label {
         display: block;
         text-align: left;
@@ -48,9 +49,16 @@
           bottom: 10px;
         }
       }
+      .error-message {
+        font-size: 12px;
+        color: rgb(246, 67, 67);
+        width: 100%;
+        text-align: left;
+        position: absolute;
+      }
       button {
         width: 100%;
-        border-radius: 8px;
+        border-radius: 18px;
         border: none;
         margin: 26px 0 10px;
         padding: 6px;
