@@ -28,3 +28,41 @@
     }
   }
 }
+
+// modal create user (ModalUser.js)
+.modal-create-user {
+  .modal-content {
+    .modal-row {
+      margin: 10px 0 18px;
+      .modal-col {
+        display: flex;
+        justify-content: space-evenly;
+        .modal-item-6 {
+          width: 48%;
+          label {
+            width: 100%;
+            margin-top: 6px;
+          }
+          input {
+            width: 100%;
+          }
+        }
+        .modal-item-12 {
+          width: 98%;
+          label {
+            width: 100%;
+            margin-top: 6px;
+          }
+          input {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .modal-btn {
+    padding: 0 12px;
+    border: none;
+  }
+}

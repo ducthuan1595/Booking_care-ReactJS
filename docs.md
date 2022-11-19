@@ -17,3 +17,7 @@ Redux -> store/actions and reducer
 
 - manage user: -> system/UserManage.js
   - import { getAllUsers } from "../../services/userService" (get db(API))
+
+* ctrl - p (fast found file)
+
+- emitter utils/emitter.js (use to call conponent from parent to child and reverse)
