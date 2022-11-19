@@ -6,8 +6,10 @@ import {
   getAllUsers,
   creatNewUserApi,
   deleteUserApi,
+  editUserApi,
 } from "../../services/userService"; //get api from backend
 import ModalUser from "./ModalUser";
+import ModalEditUser from "./ModalEditUser";
 import { emitter } from "../../utils/emitter";
 
 class UserManage extends Component {
@@ -16,6 +18,8 @@ class UserManage extends Component {
     this.state = {
       arrUser: [],
       isOpenModal: false,
+      isOpenEditModal: false,
+      userEdit: {},
     };
   }
 
@@ -47,6 +51,12 @@ class UserManage extends Component {
     });
   };
 
+  toggleEditUser = () => {
+    this.setState({
+      isOpenEditModal: !this.state.isOpenEditModal,
+    });
+  };
+
   createNewUser = async (data) => {
     try {
       let res = await creatNewUserApi(data);
@@ -67,6 +77,37 @@ class UserManage extends Component {
   handleDeleteUser = async (userId) => {
     try {
       let res = await deleteUserApi(userId);
+      console.log(res);
+      if (res && res.errCode === 0) {
+        this.setState({
+          isOpenEditModal: false,
+        });
+        await this.getAllUserFromReact();
+        console.log("done");
+      } else {
+        alert(res.errMessage);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  handleEditUser = async (userId) => {
+    try {
+      console.log("edit user", userId);
+      this.setState({
+        isOpenEditModal: true,
+        userEdit: userId,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  saveEditUser = async (user) => {
+    try {
+      let res = await editUserApi(user);
+      console.log("click edit", res);
       if (res && res.errCode === 0) {
         await this.getAllUserFromReact();
       }
@@ -85,6 +126,14 @@ class UserManage extends Component {
             toggleModal={this.toggleModal}
             createNewUser={this.createNewUser}
           />
+          {this.state.isOpenEditModal && (
+            <ModalEditUser
+              isOpen={this.state.isOpenEditModal}
+              toggleModal={this.toggleEditUser}
+              currentUser={this.state.userEdit} //pass current user for ModalEditUser.js
+              editUser={this.saveEditUser} //get edit user when click save in ModalEditUser.js
+            />
+          )}
           <div className="title">Manage user</div>
           <div className="mt-4">
             <button
@@ -116,7 +165,7 @@ class UserManage extends Component {
                         <td>{item.address}</td>
                         <td>
                           <div className="btn btn-manage">
-                            <span>
+                            <span onClick={() => this.handleEditUser(item)}>
                               <i className="fas fa-pencil-alt"></i>
                             </span>
                             <span
