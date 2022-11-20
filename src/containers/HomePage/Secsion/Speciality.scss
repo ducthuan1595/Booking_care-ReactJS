@@ -1,0 +1,43 @@
+//slick react
+.home-speciality {
+  background-color: #d4d4d447;
+  .home-page-speciality {
+    margin: 30px 50px 50px;
+  }
+  .home-speciality-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 34px;
+  }
+  button:first-child {
+    left: 0 !important;
+    // right: 0 !important;
+    z-index: 10 !important;
+  }
+  button:last-child {
+    // left: 0 !important;
+    right: 0 !important;
+    z-index: 10 !important;
+  }
+  .home-speciality-lists {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    .speciality-image {
+      align-self: center;
+      .image-item {
+        margin: 0 5px;
+        background: url(../../../assets/images/doctor2.webp) top center/cover
+          no-repeat;
+        padding-top: 50%;
+        background-size: cover;
+        height: 180px;
+        border-radius: 5px;
+      }
+      p {
+        margin: 0 5px;
+        color: #646363;
+      }
+    }
+  }
+}

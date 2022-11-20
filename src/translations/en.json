@@ -1,4 +1,19 @@
 {
+    "home-header": {
+        "speciality": "Medical speciality",
+        "search-doctor": "Find a speciality doctor",
+        "health-facilities": "Health facilities",
+        "choose-clinic": "Choose clinic",
+        "doctor": "Doctor",
+        "good-doctor": "Choose good doctor",
+        "package-check": "Package check",
+        "general-health-check": "Genaral health check",
+        "help": "Support"
+    },
+    "banner": {
+        "title1": "MEDICAL BACKGROUND",
+        "title2": "COMPREHENSIVE HEALTH CARE"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",
