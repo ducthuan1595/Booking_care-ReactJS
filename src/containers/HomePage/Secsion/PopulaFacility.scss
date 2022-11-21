@@ -1,10 +1,10 @@
 //slick react
-.home-speciality {
-  background-color: #d4d4d447;
-  .home-page-speciality {
+.home-popular-facility {
+  background-color: #fff;
+  .home-page-content {
     margin: 30px 50px 50px;
   }
-  .home-speciality-title {
+  .home-title {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 34px;
@@ -19,15 +19,15 @@
   //   right: 0 !important;
   //   z-index: 10 !important;
   // }
-  .home-speciality-lists {
+  .home-lists {
     display: flex;
     justify-content: center;
     align-content: center;
-    .speciality-image {
+    .image-items {
       align-self: center;
       .image-item {
         margin: 0 5px;
-        background: url(../../../assets/images/doctor2.webp) top center/cover
+        background: url(../../../assets/images/hospital.jpg) top center/cover
           no-repeat;
         padding-top: 50%;
         background-size: cover;

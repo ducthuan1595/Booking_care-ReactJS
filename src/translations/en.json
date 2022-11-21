@@ -12,7 +12,13 @@
     },
     "banner": {
         "title1": "MEDICAL BACKGROUND",
-        "title2": "COMPREHENSIVE HEALTH CARE"
+        "title2": "COMPREHENSIVE HEALTH CARE",
+        "specialist-examination": "Specialist examination",
+        "remote-examination": "Remote examination",
+        "general-examination": "Genaral examination",
+        "medical-test": "Medical check",
+        "mental-health": "Mental health",
+        "dental-examination": "Dental examination"
     },
     "common": {
         "add": "Add",

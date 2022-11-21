@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import HomeHeader from "./Header/HomeHeader";
 import Speciality from "./Secsion/Speciality";
+import PopulaFacility from "./Secsion/PopulaFacility";
+import PopularDoctor from "./Secsion/PopularDoctor";
+import HandBook from "./Secsion/HandBook";
+import HomeAbout from "./Secsion/HomeAbout";
+import HomeFooter from "./Header/HomeFooter";
 
 class HomePage extends Component {
   render() {
@@ -10,6 +15,11 @@ class HomePage extends Component {
         <div>
           <HomeHeader />
           <Speciality />
+          <PopulaFacility />
+          <PopularDoctor />
+          <HandBook />
+          <HomeAbout />
+          <HomeFooter />
         </div>
       </>
     );

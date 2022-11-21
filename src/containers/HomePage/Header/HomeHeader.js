@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./HomeHeader.scss";
-import { FormattedMessage } from "react-intl";
-import { LANGUAGES } from "../../../utils";
+import { FormattedMessage } from "react-intl"; //format language
+import { LANGUAGES } from "../../../utils"; //type language
 
 import { changeLanguageApp } from "../../../store/actions/appActions"; //redux language
 
@@ -102,33 +102,50 @@ class HomeHeader extends Component {
             </p>
           </div>
           <div className="home-search">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Tìm bác sĩ" />
+            <i className="fas fa-search"></i>
+            <input
+              type="text"
+              placeholder={
+                <FormattedMessage id="banner.specialist-examination" />
+              }
+            />
           </div>
           <div className="home-lists">
             <div className="list-item">
-              <i class="fas fa-hospital-alt"></i>
-              <div>Khám chuyên khoa</div>
+              <i className="fas fa-hospital-alt"></i>
+              <div>
+                <FormattedMessage id="banner.specialist-examination" />
+              </div>
             </div>
             <div className="list-item">
-              <i class="fas fa-ambulance"></i>
-              <div>Khám từ xa</div>
+              <i className="fas fa-ambulance"></i>
+              <div>
+                <FormattedMessage id="banner.remote-examination" />
+              </div>
             </div>
             <div className="list-item">
-              <i class="fas fa-stethoscope"></i>
-              <div>Khám tổng quát</div>
+              <i className="fas fa-stethoscope"></i>
+              <div>
+                <FormattedMessage id="banner.general-examination" />
+              </div>
             </div>
             <div className="list-item">
-              <i class="fas fa-flask"></i>
-              <div>Xét y học</div>
+              <i className="fas fa-flask"></i>
+              <div>
+                <FormattedMessage id="banner.medical-test" />
+              </div>
             </div>
             <div className="list-item">
-              <i class="fas fa-code-branch"></i>
-              <div>Sức khỏe tinh thần</div>
+              <i className="fas fa-code-branch"></i>
+              <div>
+                <FormattedMessage id="banner.mental-health" />
+              </div>
             </div>
             <div className="list-item">
-              <i class="fas fa-diagnoses"></i>
-              <div>Khám nha khoa</div>
+              <i className="fas fa-diagnoses"></i>
+              <div>
+                <FormattedMessage id="banner.dental-examination" />
+              </div>
             </div>
           </div>
         </div>
