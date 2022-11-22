@@ -1,23 +1,48 @@
 @import "../../styles/common.scss";
 
 .header-container {
-    z-index: 99;
-    display: flex;
-    justify-content: space-between;
-    background-color: $colormain;
-    color: $common-text-color;
-    height: 40px;
-    position: relative;
-    .btn-logout {
-        color: $common-text-color;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 10px;
-        &:hover {
-            background-color: darken($colormain, 5);
-        }
-        i {
-            font-size: $base-size + 1px;
-        }
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  background-color: $colormain;
+  color: $common-text-color;
+  height: 40px;
+  position: relative;
+
+  .languages {
+    // margin-right: 32px;
+    cursor: pointer;
+    .name-user {
+      margin-right: 22px;
     }
+    .language-vi {
+      margin-right: 8px;
+      opacity: 1;
+      color: #ed2525;
+    }
+    .language-vi.active {
+      opacity: 1;
+    }
+    .language-en {
+      margin-left: 8px;
+      margin-right: 23px;
+      opacity: 1;
+      color: rgb(38, 243, 52);
+    }
+    .language-en.active {
+      opacity: 1;
+    }
+    .btn-logout {
+      color: $common-text-color;
+      line-height: 40px;
+      height: 40px;
+      padding: 0 10px;
+      &:hover {
+        background-color: darken($colormain, 5);
+      }
+      i {
+        font-size: $base-size + 1px;
+      }
+    }
+  }
 }

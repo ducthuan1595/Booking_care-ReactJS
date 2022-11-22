@@ -2,6 +2,7 @@
 .home-popular-doctor {
   background-color: #d4d4d447;
   .home-page-content {
+    padding: 30px 0 40px;
     margin: 30px 50px 50px;
   }
   .home-title {
@@ -20,7 +21,7 @@
   //   z-index: 10 !important;
   // }
   .home-lists {
-    display: flex;
+    display: block;
     justify-content: space-around;
     align-content: center;
     .image-items {

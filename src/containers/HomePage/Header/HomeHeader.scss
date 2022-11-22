@@ -1,6 +1,11 @@
-* {
-  overflow-x: hidden !important;
-}
+// * {
+//   overflow-x: hidden !important;
+//   scroll-behavior: auto;
+//   overflow-y: auto;
+//   *::-webkit-scrollbar {
+//     display: none;
+//   }
+// }
 
 .home-header-container {
   position: fixed;
@@ -178,42 +183,6 @@
       div {
         text-align: center;
         font-size: 16px;
-      }
-    }
-  }
-}
-
-//home footer
-.home-footer {
-  background-color: #65aeb5;
-  padding: 40px;
-  .footer-content {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    p {
-      margin: 0;
-      color: #fff;
-      font-size: 15px;
-      em {
-        color: #0d6efd;
-      }
-    }
-    a {
-      text-decoration: none;
-      padding: 0;
-      .facebook {
-        font-size: 26px;
-        color: rgb(23, 19, 220);
-        margin: 0 12px;
-        // background-color: #fff;
-        padding: 0;
-      }
-      .google {
-        padding: 0;
-        // background-color: #fff;
-        font-size: 26px;
-        color: #fa4a0f;
       }
     }
   }

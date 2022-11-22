@@ -17,9 +17,9 @@ class Speciality extends Component {
       slidesToShow: 4,
       slidesToScroll: 2,
       autoplay: true,
-      autoplaySpeed: 5000,
-      pauseOnHover: true,
+      autoplaySpeed: 9000,
       cssEase: "linear",
+      pauseOnHover: true,
     };
     return (
       <div className="home-speciality">

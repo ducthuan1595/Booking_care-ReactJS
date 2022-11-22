@@ -2,28 +2,13 @@
 .home-about {
   background-color: #d4d4d447;
   .home-page-content {
+    padding: 30px 0;
     margin: 30px 50px 50px;
   }
   .home-title {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 34px;
-  }
-  button:first-child {
-    left: 0 !important;
-    background-color: #65aeb5;
-    height: 27px !important;
-    opacity: 0.6;
-    // right: 0 !important;
-    z-index: 10 !important;
-  }
-  button:last-child {
-    background-color: #65aeb5;
-    height: 27px !important;
-    opacity: 0.6;
-    // left: 0 !important;
-    right: 0 !important;
-    z-index: 10 !important;
   }
   .home-lists {
     display: flex;

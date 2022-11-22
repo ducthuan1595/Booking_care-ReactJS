@@ -21,3 +21,22 @@ Redux -> store/actions and reducer
 * ctrl - p (fast found file)
 
 - emitter utils/emitter.js (use to call conponent from parent to child and reverse)
+
+- react-slick (library: slider)
+
+* hidden thanh scroll = (
+  a {
+  overflow-y: hidden;
+  overflow-x: auto;
+  }
+  a::-webkit-scrollbar {
+  display: none;
+  }
+  )
+
+* Conver placeholder language =
+  <FormattedMessage id="yourid" defaultMessage="search">
+  {placeholder=>  
+   <Input placeholder={placeholder}/>
+  }
+  </FormattedMessage>

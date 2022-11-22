@@ -2,7 +2,9 @@
 .home-speciality {
   background-color: #d4d4d447;
   .home-page-speciality {
+    // display: block;
     margin: 30px 50px 50px;
+    padding: 30px 0 50px;
   }
   .home-speciality-title {
     font-size: 24px;
@@ -20,7 +22,7 @@
   //   z-index: 10 !important;
   // }
   .home-speciality-lists {
-    display: flex;
+    display: block;
     justify-content: center;
     align-content: center;
     .speciality-image {

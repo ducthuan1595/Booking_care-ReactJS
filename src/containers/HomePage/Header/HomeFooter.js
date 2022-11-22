@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./HomeHeader.scss";
+// import "./HomeHeader.scss";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../../utils";
 
@@ -17,9 +17,9 @@ class HomeFooter extends Component {
       <>
         <div className="home-footer">
           <div className="footer-content">
-            <p>
+            <i>
               &copy; Thuan Truong, <em>contact:</em>{" "}
-            </p>
+            </i>
             <a href="#">
               <i className="fab fa-facebook-square facebook"></i>
             </a>

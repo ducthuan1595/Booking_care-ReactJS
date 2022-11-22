@@ -13,6 +13,7 @@ class HomeHeader extends Component {
 
   render() {
     let language = this.props.language;
+    console.log("check userInfo", this.props.userInfo);
     return (
       <>
         <div className="home-header-container">
@@ -103,12 +104,10 @@ class HomeHeader extends Component {
           </div>
           <div className="home-search">
             <i className="fas fa-search"></i>
-            <input
-              type="text"
-              placeholder={
-                <FormattedMessage id="banner.specialist-examination" />
-              }
-            />
+            {/* change placelhoder language */}
+            <FormattedMessage id="banner.find-doctor">
+              {(msg) => <input placeholder={msg} type="text" />}
+            </FormattedMessage>
           </div>
           <div className="home-lists">
             <div className="list-item">
@@ -158,6 +157,7 @@ const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
     language: state.app.language,
+    userInfo: state.user.userInfo,
   };
 };
 

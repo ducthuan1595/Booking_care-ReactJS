@@ -7,12 +7,14 @@ import PopularDoctor from "./Secsion/PopularDoctor";
 import HandBook from "./Secsion/HandBook";
 import HomeAbout from "./Secsion/HomeAbout";
 import HomeFooter from "./Header/HomeFooter";
+import "./Header/HomeHeader.scss";
+import "./HomePage.scss";
 
 class HomePage extends Component {
   render() {
     return (
       <>
-        <div>
+        <div className="home-page">
           <HomeHeader />
           <Speciality />
           <PopulaFacility />
