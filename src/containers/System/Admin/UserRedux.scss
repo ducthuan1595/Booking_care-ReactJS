@@ -1,0 +1,61 @@
+.user-redux {
+  h2 {
+    text-align: center;
+    margin: 20px 0;
+  }
+  .user-redux-container {
+    .container {
+      .row {
+        // width: 100%;
+        // margin: 0 50px;
+        .form-redux {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          // row-gap: 2;
+          .col-md-4 {
+            width: 24%;
+          }
+          .col-md-6 {
+            width: 49%;
+          }
+          .col-md-9 {
+            width: 74%;
+          }
+          .col-md-3 {
+            width: 24%;
+          }
+          .form-group {
+            margin-top: 12px;
+            .form-image {
+              // display: flex;
+              align-items: center;
+              position: relative;
+              .image-upload {
+                background-color: #868585;
+                color: #fff;
+                width: 80px;
+                height: 24px;
+                text-align: center;
+                margin-top: 10px;
+              }
+              .preview-image {
+                position: absolute;
+                left: 90px;
+                top: 20px;
+                width: 50px;
+                height: 50px;
+                border: 1px solid #dada;
+                background-size: cover;
+              }
+            }
+          }
+          .form-group + .form-group {
+            // margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}

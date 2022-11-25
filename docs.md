@@ -40,3 +40,16 @@ Redux -> store/actions and reducer
    <Input placeholder={placeholder}/>
   }
   </FormattedMessage>
+
+Post 57: REDUX
+
+- Redux(Actions, Reducers)
+
+Post 58:
+
+- do with input image: use label load image instead of input
+
+* <input id="prev-image" hidden type="file" />
+* <label htmlFor="prev-image">down image</label>
+
+- npm i react-image-lightbox (use phong to image)
