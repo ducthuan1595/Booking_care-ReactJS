@@ -150,7 +150,7 @@ class UserManage extends Component {
                   <th>Email</th>
                   <th>FirstName</th>
                   <th>LastName</th>
-                  <th>LastName</th>
+                  <th>address</th>
                   <th>Actions</th>
                 </tr>
               </thead>

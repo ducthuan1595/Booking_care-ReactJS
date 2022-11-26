@@ -9,6 +9,8 @@ import * as actions from "../../../store/actions"; //actions of redux
 import Lightbox from "react-image-lightbox"; //library: phong to image
 import "react-image-lightbox/style.css";
 
+import TableManageUser from "./TableManageUser"; //table edit user with redux
+
 class UserRedux extends Component {
   constructor(props) {
     super(props);
@@ -75,6 +77,20 @@ class UserRedux extends Component {
         role: arrRole && arrRole.length > 0 ? arrRole[0].key : "",
       });
     }
+    if (prevProps.users !== this.props.users) {
+      this.setState({
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        address: "",
+        phoneNumber: "",
+        gender: "",
+        role: "",
+        position: "",
+        avatar: "",
+      });
+    }
   }
 
   //create file image tranfer URL
@@ -103,7 +119,20 @@ class UserRedux extends Component {
     let isValid = this.checkValidateInput();
     if (isValid === false) return;
 
-    console.log("input return user data", this.state);
+    //fire redux action
+    this.props.createNewUser({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password,
+      gender: this.state.gender,
+      address: this.state.address,
+      roleId: this.state.role,
+      positionId: this.state.position,
+      phoneNumber: this.state.phoneNumber,
+    });
+    // this.props.fetchUserRedux();
+    // console.log("input return user data", this.state);
   };
 
   checkValidateInput = () => {
@@ -115,11 +144,8 @@ class UserRedux extends Component {
       "lastName",
       "phoneNumber",
       "address",
-      "role",
-      "position",
-      "gender",
     ];
-    for (let i = 0; arrCheck.length >= i; i++) {
+    for (let i = 0; arrCheck.length > i; i++) {
       if (!this.state[arrCheck[i]]) {
         isValid = false;
         alert("Invalid input: " + arrCheck[i]);
@@ -170,7 +196,7 @@ class UserRedux extends Component {
             <div className="container">
               <div>{isLoadingGender === true ? "loading genders" : ""}</div>
               <h4>Add a new user</h4>
-              <div className="row">
+              <div className="row-form">
                 <form>
                   <div className="form-redux">
                     <div className="form-group col col-md-6">
@@ -178,6 +204,7 @@ class UserRedux extends Component {
                       <input
                         type="email"
                         className="form-control"
+                        placeholder="thuan@gmail.com"
                         value={email}
                         onChange={(e) => this.onChangeInput(e, "email")}
                       />
@@ -196,7 +223,7 @@ class UserRedux extends Component {
                     <div className="form-group col-md-6">
                       <label>FirstName</label>
                       <input
-                        type="email"
+                        type="text"
                         className="form-control"
                         value={firstName}
                         onChange={(e) => this.onChangeInput(e, "firstName")}
@@ -205,7 +232,7 @@ class UserRedux extends Component {
                     <div className="form-group col-md-6">
                       <label>Lastname</label>
                       <input
-                        type="password"
+                        type="text"
                         className="form-control"
                         value={lastName}
                         onChange={(e) => this.onChangeInput(e, "lastName")}
@@ -219,7 +246,7 @@ class UserRedux extends Component {
                         type="text"
                         className="form-control"
                         name="address"
-                        placeholder="003.689.1995"
+                        placeholder="132 New Jason, New york, US"
                         value={address}
                         onChange={(e) => this.onChangeInput(e, "address")}
                       />
@@ -337,6 +364,7 @@ class UserRedux extends Component {
                 </form>
               </div>
             </div>
+            <TableManageUser />
           </div>
           {/* //phong to image */}
           {this.state.isOpen === true && (
@@ -359,6 +387,7 @@ const mapStateToProps = (state) => {
     positionRedux: state.admin.positions,
     roleRedux: state.admin.roles,
     isLoadingGender: state.admin.isLoadingGender,
+    users: state.admin.users,
   };
 };
 
@@ -367,7 +396,8 @@ const mapDispatchToProps = (dispatch) => {
     getGenderStart: () => dispatch(actions.fetchGenderStart()),
     getPositionStart: () => dispatch(actions.fetchPositionStart()),
     getRoleStart: () => dispatch(actions.fetchRoleStart()),
-    createNewUser: (data) => dispatch(actions.saveNewUser(data)),
+    createNewUser: (data) => dispatch(actions.createNewUser(data)),
+    fetchUserRedux: () => dispatch(actions.fetchAllUserStart()),
   };
 };
 
