@@ -18,7 +18,7 @@ const deleteUserApi = (id) => {
   });
 };
 const editUserApi = (data) => {
-  return axios.put("/api/edit-user", data);
+  return axios.put("/api/edit-user", { data: data });
 };
 const getAllCodeService = (input) => {
   return axios.get(`/api/allcode?type=${input}`);

@@ -53,3 +53,17 @@ Post 58:
 * <label htmlFor="prev-image">down image</label>
 
 - npm i react-image-lightbox (use phong to image)
+
+POST 62: save image with base64
+
+- create:
+  static getBase64(file) {
+  return new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = (error) => reject(error);
+  });
+  }
+- use
+  let base64 = await CommonUtils.getBase64(file);

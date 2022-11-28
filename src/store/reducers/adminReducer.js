@@ -1,7 +1,7 @@
 import actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  gender: [],
+  genders: [],
   roles: [],
   positions: [],
   isLoadingGender: true,

@@ -4,6 +4,7 @@ import {
   creatNewUserApi,
   getAllUsers,
   deleteUserApi,
+  editUserApi,
 } from "../../services/userService"; //get all information from api
 import { toast } from "react-toastify"; //user library toast page
 
@@ -92,10 +93,11 @@ export const createNewUser = (inputData) => {
       let res = await creatNewUserApi(inputData);
       if (res && res.errCode === 0) {
         toast.success("Create a new user success!");
-        dispatch(saveUseSuccess());
+        dispatch(saveUserSuccess());
         dispatch(fetchAllUserStart());
       } else {
         dispatch(saveUserFail());
+        toast.error("Create user error");
       }
     } catch (e) {
       dispatch(saveUserFail());
@@ -106,7 +108,7 @@ export const createNewUser = (inputData) => {
 export const saveUserFail = () => ({
   type: actionTypes.SAVE_USER_FAIL,
 });
-export const saveUseSuccess = () => ({
+export const saveUserSuccess = () => ({
   type: actionTypes.SAVE_USER_SUCCESS,
 });
 
@@ -165,4 +167,32 @@ export const deleteUserSuccess = () => ({
 });
 export const deleteUserFail = () => ({
   type: actionTypes.DELETE_USER_FAIL,
+});
+
+// EDIT USER REDUX
+export const editUser = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await editUserApi(data);
+      console.log("check create user redux", res);
+      if (res && res.errCode === 0) {
+        toast.success("Update the user success!");
+        dispatch(editUserSuccess());
+        dispatch(fetchAllUserStart());
+      } else {
+        toast.error("Fetch users error!");
+        dispatch(editUserFail());
+      }
+    } catch (e) {
+      toast.error("Fetch users error");
+      dispatch(editUserFail());
+      toast.log("Edit user error", e);
+    }
+  };
+};
+export const editUserSuccess = () => ({
+  type: actionTypes.EDIT_USER_SUCCESS,
+});
+export const editUserFail = () => ({
+  type: actionTypes.EDIT_USER_FAIL,
 });
