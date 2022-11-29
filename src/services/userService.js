@@ -18,10 +18,14 @@ const deleteUserApi = (id) => {
   });
 };
 const editUserApi = (data) => {
-  return axios.put("/api/edit-user", { data: data });
+  return axios.put("/api/edit-user", data);
 };
 const getAllCodeService = (input) => {
   return axios.get(`/api/allcode?type=${input}`);
+};
+
+const getTopDoctorHomeService = (limit) => {
+  return axios.get(`/api/top-doctor-home?limit=${limit}`);
 };
 export {
   handleLoginApi,
@@ -30,4 +34,5 @@ export {
   deleteUserApi,
   editUserApi,
   getAllCodeService,
+  getTopDoctorHomeService,
 };

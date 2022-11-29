@@ -5,6 +5,7 @@ import {
   getAllUsers,
   deleteUserApi,
   editUserApi,
+  getTopDoctorHomeService,
 } from "../../services/userService"; //get all information from api
 import { toast } from "react-toastify"; //user library toast page
 
@@ -112,7 +113,7 @@ export const saveUserSuccess = () => ({
   type: actionTypes.SAVE_USER_SUCCESS,
 });
 
-//edid user redux
+//get all user redux
 export const fetchAllUserStart = () => {
   return async (dispatch, getState) => {
     try {
@@ -196,3 +197,27 @@ export const editUserSuccess = () => ({
 export const editUserFail = () => ({
   type: actionTypes.EDIT_USER_FAIL,
 });
+
+export const fetchTopDoctor = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getTopDoctorHomeService("");
+      console.log("check doctor redux", res);
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
+          dataDoctors: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_TOP_DOCTOR_FAIL,
+        });
+      }
+    } catch (e) {
+      console.log("Fetch doctors error", e);
+      dispatch({
+        type: actionTypes.FETCH_TOP_DOCTOR_FAIL,
+      });
+    }
+  };
+};

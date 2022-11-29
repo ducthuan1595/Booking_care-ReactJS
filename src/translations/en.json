@@ -36,5 +36,8 @@
             "handbook": "Handbook",
             "manage-handbook": "Manage handbook"
         }
+    },
+    "homepage": {
+        "outstanding-writter": "Outstanding writter"
     }
 }
