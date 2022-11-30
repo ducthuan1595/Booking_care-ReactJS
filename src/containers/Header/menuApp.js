@@ -1,7 +1,7 @@
 export const adminMenu = [
+  //hệ thống
+  //magage user
   {
-    //hệ thống
-    //magage user
     name: "menu.admin.manage-user",
     menus: [
       {
@@ -24,16 +24,21 @@ export const adminMenu = [
       },
       {
         name: "menu.admin.manage-doctor",
-        link: "/system/user-doctor",
+        link: "/system/manage-doctor",
       },
+      // {
+      //   name: "menu.admin.manage-admin",
+      //   link: "/system/user-admin",
+      // },
       {
-        name: "menu.admin.manage-admin",
-        link: "/system/user-admin",
+        name: "menu.doctor.manage-schedule",
+        link: "/doctor/schedule-manage",
       },
     ],
   },
+
+  //manage-clinic
   {
-    //manage-clinic
     name: "menu.admin.clinic",
     menus: [
       {
@@ -42,8 +47,9 @@ export const adminMenu = [
       },
     ],
   },
+
+  //mange speciality
   {
-    //mange speciality
     name: "menu.admin.specialty",
     menus: [
       {
@@ -52,13 +58,28 @@ export const adminMenu = [
       },
     ],
   },
+
+  //manage handbook
   {
-    //manage handbook
     name: "menu.admin.handbook",
     menus: [
       {
         name: "menu.admin.manage-handbook",
         link: "/system/manage-handbook",
+      },
+    ],
+  },
+];
+
+//doctor Menu
+export const doctorMenu = [
+  {
+    name: "menu.admin.manage-user",
+    menus: [
+      {
+        //manage schedule check of doctor
+        name: "menu.doctor.manage-schedule",
+        link: "/doctor/schedule-manage",
       },
     ],
   },

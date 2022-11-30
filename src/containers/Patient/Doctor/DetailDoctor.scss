@@ -1,0 +1,66 @@
+.doctor-detail-container {
+  margin-top: 60px;
+  background-color: #fcfbfb;
+  // background-image: url("../../../assets/images/wood-background.jpg");
+  // background-repeat: none;
+  // background-size: cover;
+  // color: currentColor;
+  .link-title {
+    display: flex;
+    margin: 6px 50px;
+    color: rgb(34, 107, 235);
+    text-decoration: none;
+    i {
+      margin-top: 3px;
+    }
+    p {
+      margin-left: 10px;
+      margin-top: 0;
+    }
+  }
+  .infor-doctor {
+    display: flex;
+    margin: 0 50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #d0d0d0;
+    .image {
+      width: 150px;
+      height: 150px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: white;
+      border-radius: 50%;
+      margin: 20px 20px 0px 0;
+    }
+    .infor {
+      margin: 20px 0;
+      .infor-doctor {
+        width: 600px;
+        margin: 0;
+        border: none;
+      }
+    }
+  }
+  .schedule-doctor {
+    display: flex;
+    margin: 40px 50px;
+    .schedule {
+      width: 50%;
+    }
+  }
+  .detail-doctor {
+    margin: 40px 50px;
+    padding: 40px 0;
+    color: #333;
+    border-top: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
+    .title-name {
+      div {
+        padding: 0;
+      }
+    }
+  }
+  .comment-doctor {
+  }
+}

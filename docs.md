@@ -67,3 +67,8 @@ POST 62: save image with base64
   }
 - use
   let base64 = await CommonUtils.getBase64(file);
+
+POST 67:
+
+- Edit text(react-markdown-editor-lite)
+- select infor(react-select)

@@ -13,14 +13,14 @@ class HomeHeader extends Component {
 
   render() {
     let language = this.props.language;
-    console.log("check userInfo", this.props.userInfo);
+    // console.log("check userInfo", this.props.userInfo);
     return (
       <>
         <div className="home-header-container">
           <div className="home-header">
             <div className="header-left">
               <i className="fas fa-bars"></i>
-              <a href="#">
+              <a href="/">
                 <div className="header-image"></div>
               </a>
             </div>
@@ -93,61 +93,63 @@ class HomeHeader extends Component {
             </div>
           </div>
         </div>
-        <div className="home-header-body">
-          <div className="home-title">
-            <div>
-              <FormattedMessage id="banner.title1" />
+        {this.props.isShowBanner === true && (
+          <div className="home-header-banner">
+            <div className="home-title">
+              <div>
+                <FormattedMessage id="banner.title1" />
+              </div>
+              <p>
+                <FormattedMessage id="banner.title2" />
+              </p>
             </div>
-            <p>
-              <FormattedMessage id="banner.title2" />
-            </p>
+            <div className="home-search">
+              <i className="fas fa-search"></i>
+              {/* change placelhoder language */}
+              <FormattedMessage id="banner.find-doctor">
+                {(msg) => <input placeholder={msg} type="text" />}
+              </FormattedMessage>
+            </div>
+            <div className="home-lists">
+              <div className="list-item">
+                <i className="fas fa-hospital-alt"></i>
+                <div>
+                  <FormattedMessage id="banner.specialist-examination" />
+                </div>
+              </div>
+              <div className="list-item">
+                <i className="fas fa-ambulance"></i>
+                <div>
+                  <FormattedMessage id="banner.remote-examination" />
+                </div>
+              </div>
+              <div className="list-item">
+                <i className="fas fa-stethoscope"></i>
+                <div>
+                  <FormattedMessage id="banner.general-examination" />
+                </div>
+              </div>
+              <div className="list-item">
+                <i className="fas fa-flask"></i>
+                <div>
+                  <FormattedMessage id="banner.medical-test" />
+                </div>
+              </div>
+              <div className="list-item">
+                <i className="fas fa-code-branch"></i>
+                <div>
+                  <FormattedMessage id="banner.mental-health" />
+                </div>
+              </div>
+              <div className="list-item">
+                <i className="fas fa-diagnoses"></i>
+                <div>
+                  <FormattedMessage id="banner.dental-examination" />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="home-search">
-            <i className="fas fa-search"></i>
-            {/* change placelhoder language */}
-            <FormattedMessage id="banner.find-doctor">
-              {(msg) => <input placeholder={msg} type="text" />}
-            </FormattedMessage>
-          </div>
-          <div className="home-lists">
-            <div className="list-item">
-              <i className="fas fa-hospital-alt"></i>
-              <div>
-                <FormattedMessage id="banner.specialist-examination" />
-              </div>
-            </div>
-            <div className="list-item">
-              <i className="fas fa-ambulance"></i>
-              <div>
-                <FormattedMessage id="banner.remote-examination" />
-              </div>
-            </div>
-            <div className="list-item">
-              <i className="fas fa-stethoscope"></i>
-              <div>
-                <FormattedMessage id="banner.general-examination" />
-              </div>
-            </div>
-            <div className="list-item">
-              <i className="fas fa-flask"></i>
-              <div>
-                <FormattedMessage id="banner.medical-test" />
-              </div>
-            </div>
-            <div className="list-item">
-              <i className="fas fa-code-branch"></i>
-              <div>
-                <FormattedMessage id="banner.mental-health" />
-              </div>
-            </div>
-            <div className="list-item">
-              <i className="fas fa-diagnoses"></i>
-              <div>
-                <FormattedMessage id="banner.dental-examination" />
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </>
     );
   }

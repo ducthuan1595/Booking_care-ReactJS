@@ -4,6 +4,7 @@ import "./PopularDoctor.scss";
 import { FormattedMessage } from "react-intl";
 import * as actions from "../../../store/actions";
 import { LANGUAGES } from "../../../utils";
+import { withRouter } from "react-router";
 
 //react slick (arrow right or left)
 import Slider from "react-slick";
@@ -27,6 +28,11 @@ class PopularDoctor extends Component {
   componentDidMount() {
     this.props.loadTopDoctors(); //ham accept actions dk dua vao in redux
   }
+
+  handleViewDetailDoctor = (doctor) => {
+    console.log("check view detail doctor", doctor);
+    this.props.history.push(`/detail-doctor/${doctor.id}`);
+  };
 
   render() {
     // console.log("check top doctor", this.props.topDoctorRedux);
@@ -64,7 +70,11 @@ class PopularDoctor extends Component {
                   let nameVi = `${item.positionData.value_vi}, ${item.lastName} ${item.firstName}`;
                   let nameEn = `${item.positionData.value_en}, ${item.firstName} ${item.lastName}`;
                   return (
-                    <div className="image-items" key={index}>
+                    <div
+                      className="image-items"
+                      key={index}
+                      onClick={() => this.handleViewDetailDoctor(item)}
+                    >
                       <div
                         className="image-item"
                         style={{ backgroundImage: `url(${imageBase64})` }}
@@ -96,4 +106,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PopularDoctor);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(PopularDoctor)
+);

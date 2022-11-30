@@ -1,0 +1,28 @@
+.manage-doctor {
+  // text-align: center;
+  margin: 30px;
+  .manage-doctor-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0071ba;
+    font-weight: 700;
+  }
+  .manage-doctor-infor {
+    // display: flex;
+    // justify-content: space-around;
+    text-align: left;
+  }
+  .manage-doctor-markdown {
+    .btn {
+      color: #fff;
+      background-color: #edcb51;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      margin: 10px 0 20px;
+      display: flex;
+      justify-content: flex-start;
+      // float: left;
+    }
+  }
+}

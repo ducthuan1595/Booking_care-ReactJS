@@ -26,6 +26,7 @@
     align-content: center;
     .image-items {
       display: flex !important;
+      cursor: pointer;
       justify-content: center;
       align-items: center;
       flex-direction: column;
