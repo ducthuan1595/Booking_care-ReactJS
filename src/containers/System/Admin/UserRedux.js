@@ -69,15 +69,15 @@ class UserRedux extends Component {
       let arrPosition = this.props.positionRedux;
       this.setState({
         positionArr: arrPosition,
-        // position:
-        // arrPosition && arrPosition.length > 0 ? arrPosition[0].keyMap : "",
+        position:
+          arrPosition && arrPosition.length > 0 ? arrPosition[0].keyMap : "",
       });
     }
     if (prevProps.roleRedux !== this.props.roleRedux) {
       let arrRole = this.props.roleRedux;
       this.setState({
         roleArr: arrRole,
-        // role: arrRole && arrRole.length > 0 ? arrRole[0].keyMap : "",
+        role: arrRole && arrRole.length > 0 ? arrRole[0].keyMap : "",
       });
     }
     if (prevProps.users !== this.props.users) {
@@ -173,7 +173,7 @@ class UserRedux extends Component {
       "phoneNumber",
       "address",
     ];
-    for (let i = 0; arrCheck.length > i; i++) {
+    for (let i = 0; i < arrCheck.length; i++) {
       if (!this.state[arrCheck[i]]) {
         isValid = false;
         alert("Invalid input: " + arrCheck[i]);
@@ -211,8 +211,8 @@ class UserRedux extends Component {
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
       address: user.address,
-      role: user.role,
-      position: user.position,
+      role: user.roleId,
+      position: user.positionId,
       gender: user.gender,
       avatar: "",
       previewImgURL: imageBase64,
@@ -330,6 +330,7 @@ class UserRedux extends Component {
                         id="inputState"
                         className="form-control"
                         onChange={(e) => this.onChangeInput(e, "gender")}
+                        value={gender}
                       >
                         {genders &&
                           genders.length > 0 &&
@@ -351,6 +352,7 @@ class UserRedux extends Component {
                         id="inputState"
                         className="form-control"
                         onChange={(e) => this.onChangeInput(e, "position")}
+                        value={position}
                       >
                         {positions &&
                           positions.length > 0 &&
@@ -372,6 +374,7 @@ class UserRedux extends Component {
                         id="inputState"
                         className="form-control"
                         onChange={(e) => this.onChangeInput(e, "role")}
+                        value={role}
                       >
                         {roles &&
                           roles.length > 0 &&

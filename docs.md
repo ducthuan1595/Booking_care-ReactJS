@@ -72,3 +72,5 @@ POST 67:
 
 - Edit text(react-markdown-editor-lite)
 - select infor(react-select)
+- choose date (datePicker)
+- format ngay thang nam (moment)

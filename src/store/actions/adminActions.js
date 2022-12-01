@@ -93,17 +93,23 @@ export const fetchRoleFail = () => ({
 export const createNewUser = (inputData) => {
   return async (dispatch, getState) => {
     try {
-      let res = await creatNewUserApi(inputData);
-      if (res) {
+      let response = await creatNewUserApi(inputData);
+      if (response) {
         toast.success("Create a new user success!");
-        dispatch(saveUserSuccess());
+        dispatch({
+          type: actionTypes.SAVE_USER_SUCCESS,
+        });
         dispatch(fetchAllUserStart());
       } else {
-        dispatch(saveUserFail());
+        dispatch({
+          type: actionTypes.SAVE_USER_FAIL,
+        });
         toast.error("Create user error");
       }
     } catch (e) {
-      dispatch(saveUserFail());
+      dispatch({
+        type: actionTypes.SAVE_USER_FAIL,
+      });
       console.log("save user error", e);
     }
   };
@@ -119,14 +125,11 @@ export const saveUserSuccess = () => ({
 export const fetchAllUserStart = () => {
   return async (dispatch, getState) => {
     try {
-      dispatch({
-        type: actionTypes.FETCH_ROLE_START,
-      });
       let res = await getAllUsers("ALL");
-      if (res && res.errCode === 0) {
+      if (res) {
         dispatch(fetchAllUserSuccess(res.users.reverse()));
       } else {
-        toast.error("Fetch all users error!"); //use library toast page
+        toast.error("Fetch all users error"); //use library toast page
         dispatch(fetchAllUserFail());
       }
     } catch (e) {
@@ -189,7 +192,7 @@ export const editUser = (data) => {
     } catch (e) {
       toast.error("Fetch users error");
       dispatch(editUserFail());
-      toast.log("Edit user error", e);
+      console.log("Edit user error", e);
     }
   };
 };
@@ -271,6 +274,25 @@ export const saveDetailDoctors = (data) => {
       console.log("save detail doctor error", e);
       dispatch({
         type: actionTypes.SAVE_DETAIL_DOCTOR_FAIL,
+      });
+    }
+  };
+};
+
+//get allcode schedule hour
+export const fetAllScheduleTime = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllCodeService("TIME");
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS,
+          dataTime: res.data,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAIL,
       });
     }
   };

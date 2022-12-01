@@ -53,6 +53,11 @@ class Login extends Component {
       }
     }
   };
+  handleLoginWithEnter = (e) => {
+    if (e.key === "Enter") {
+      this.handleLogin();
+    }
+  };
   handleShowHidePassword = () => {
     //show hiden password
     this.setState({
@@ -74,6 +79,7 @@ class Login extends Component {
                 <input
                   className="form-control"
                   value={this.state.email}
+                  onKeyDown={(e) => this.handleLoginWithEnter(e)}
                   onChange={(e) => this.handleOnChangeInput(e)}
                   placeholder="Enter your email"
                   type="email"
@@ -85,6 +91,7 @@ class Login extends Component {
                   className="form-control"
                   value={this.state.password}
                   onChange={(e) => this.handleOnChangePassword(e)}
+                  onKeyDown={(e) => this.handleLoginWithEnter(e)}
                   placeholder="Enter your password"
                   type={this.state.isShowPassword ? "text" : "password"}
                 />
