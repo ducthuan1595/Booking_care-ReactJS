@@ -4,6 +4,7 @@ import HomeHeader from "../../HomePage/Header/HomeHeader";
 import "./DetailDoctor.scss";
 import { getDetailInforDoctor } from "../../../services/userService";
 import { LANGUAGES } from "../../../utils";
+import DoctorSchedule from "./DoctorSchedule";
 
 class DetailDoctor extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class DetailDoctor extends Component {
   }
 
   render() {
-    console.log("check state detail dcotro", this.state);
+    // console.log("check state detail dcotro", this.state);
     //console.log(this.props.match.params.id);//get id doctor
     let { detailDoctor } = this.state;
     let { language } = this.props;
@@ -66,17 +67,14 @@ class DetailDoctor extends Component {
             </div>
             <div className="schedule-doctor">
               <div className="schedule">
-                <h5>Lich kham</h5>
-                <div className="hours">
-                  <div className="hour">07:00 - 08:00</div>
-                  <div className="hour">07:00 - 08:00</div>
-                  <div className="hour">07:00 - 08:00</div>
-                  <div className="hour">07:00 - 08:00</div>
-                  <div className="hour">07:00 - 08:00</div>
-                  <div className="hour">07:00 - 08:00</div>
-                  <div className="hour">07:00 - 08:00</div>
-                  <div className="hour">07:00 - 08:00</div>
+                <div className="content-left">
+                  <DoctorSchedule
+                    doctorIdFromParent={
+                      detailDoctor && detailDoctor.id ? detailDoctor.id : -1
+                    }
+                  />
                 </div>
+                <div className="content-right"></div>
               </div>
               <div className="detail">
                 <div className="location">

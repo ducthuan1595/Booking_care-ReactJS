@@ -74,3 +74,4 @@ POST 67:
 - select infor(react-select)
 - choose date (datePicker)
 - format ngay thang nam (moment)
+- find value co trung nhau hay khong (lodash)

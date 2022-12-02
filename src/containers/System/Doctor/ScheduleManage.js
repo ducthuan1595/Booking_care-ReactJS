@@ -10,6 +10,7 @@ import DatePicker from "../../../components/Input/DatePicker";
 import moment from "moment"; //format date month, year
 import { toast } from "react-toastify"; //user library toast page
 import _ from "lodash";
+import { saveBulkDoctorService } from "../../../services/userService";
 
 // import FormattedDate from "../../../components/Formating/FormattedDate";
 
@@ -96,7 +97,7 @@ class ScheduleManage extends Component {
     }
   };
 
-  handleSaveSchedule = () => {
+  handleSaveSchedule = async () => {
     let { rangeTime, selectedOption, currentDate } = this.state;
     let result = [];
     if (!currentDate) {
@@ -106,21 +107,30 @@ class ScheduleManage extends Component {
       toast.error("Invalid seleced doctor");
       return;
     }
-    let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+    let formatedDate = new Date(currentDate).getTime();
+    // let formatedDate = moment(currentDate).unix();
+    // let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
     if (rangeTime && rangeTime.length > 0) {
       let selectedTime = rangeTime.filter((item) => item.isSelected === true);
       if (selectedTime && selectedTime.length > 0) {
-        selectedTime.map((time) => {
+        selectedTime.map((schedule) => {
           let object = {};
           object.doctorId = selectedOption.value;
           object.date = formatedDate;
-          object.time = time.keyMap;
+          object.timeType = schedule.keyMap;
           result.push(object);
         });
       } else {
         toast.error("Invalid selected time");
       }
     }
+    let res = await saveBulkDoctorService({
+      arrSchedule: result,
+      doctorId: selectedOption.value,
+      formatedDate: formatedDate,
+    });
+
+    console.log("check res", res);
     console.log("check result", result);
   };
 
@@ -129,7 +139,7 @@ class ScheduleManage extends Component {
     // console.log("check props", this.props);
     let { rangeTime } = this.state;
     let { language } = this.props;
-    console.log("check time rangeTime", rangeTime);
+    // console.log("check time rangeTime", rangeTime);
     return (
       <>
         <div className="manage-schedule-container">

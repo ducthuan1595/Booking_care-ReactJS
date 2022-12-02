@@ -46,7 +46,13 @@
     display: flex;
     margin: 40px 50px;
     .schedule {
-      width: 50%;
+      width: 100%;
+      .content-left {
+        width: 50%;
+      }
+      .content-right {
+        width: 50%;
+      }
     }
   }
   .detail-doctor {
