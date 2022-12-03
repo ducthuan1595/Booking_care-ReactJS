@@ -36,7 +36,7 @@
     .infor {
       margin: 20px 0;
       .infor-doctor {
-        width: 600px;
+        width: 800px;
         margin: 0;
         border: none;
       }
@@ -47,6 +47,7 @@
     margin: 40px 50px;
     .schedule {
       width: 100%;
+      display: flex;
       .content-left {
         width: 50%;
       }

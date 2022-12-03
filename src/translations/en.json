@@ -41,12 +41,35 @@
         }
     },
     "homepage": {
-        "outstanding-writter": "Outstanding writter"
+        "outstanding-writter": "Outstanding doctor"
     },
     "manage-schedule": {
         "title": "Manage doctor's appointment schedule",
         "choose-doctor": "Choose a doctor",
         "choose-date": "Choose date",
         "save": "SAVE"
+    },
+    "patient": {
+        "detail-doctor": {
+            "schedule": "Schedule",
+            "no-schedule": "The doctor does not have a tight schedule during this time, Please choose another time!",
+            "book-free": {
+                "first": "Choose ",
+                "second": " and book (free)"
+            },
+            "doctor-info": {
+                "title": "Manage information doctor",
+                "choose-doctor": "Choose a doctor",
+                "introduction": "Introduction",
+                "price": "Choose price",
+                "payment": "Payment method",
+                "province": "Choose province",
+                "name-clinic": "Name clinic",
+                "address": "Clinic address",
+                "note": "Note",
+                "save": "SAVE",
+                "edit": "EDIT" 
+            }
+        }
     }
 }

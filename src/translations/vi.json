@@ -41,13 +41,35 @@
         }
     },
     "homepage": {
-        "outstanding-writter": "Nhà văn nổi bật"
+        "outstanding-writter": "Bác sĩ nổi bật"
     },
     "manage-schedule": {
         "title": "Quản lý kế hoạch khám bệnh",
         "choose-doctor": "Chọn bác sĩ",
         "choose-date": "Chọn ngày",
         "save": "LƯU"
+    },
+    "patient": {
+        "detail-doctor": {
+            "schedule": "Lịch khám",
+            "no-schedule": "Bác sĩ không có lịch hẹp trong thời gian này, Vui lòng chọn thời gian khác",
+            "book-free": {
+                "first": "Chọn ",
+                "second": " và đặt (miễn phí)"
+            },
+            "doctor-info": {
+                "title": "Quản lý thông tin bác sĩ",
+                "choose-doctor": "Chọn một bác sĩ",
+                "introduction": "Thông tin giới thiệu",
+                "price": "Chọn giá",
+                "payment": "Phương thức thanh toán",
+                "province": "Chọn tỉnh thành phố",
+                "name-clinic": "Tên phòng khám",
+                "address": "Địa chỉ phòng khám",
+                "note": "Ghi chú",
+                "save": "LƯU",
+                "edit": "LƯU THAY ĐỔI"
+            }
+        }
     }
-
 }
