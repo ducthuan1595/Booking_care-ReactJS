@@ -7,7 +7,7 @@ import localization from "moment/locale/vi";
 import { LANGUAGES } from "../../../utils";
 import { getScheduleDoctorByDateService } from "../../../services/userService";
 import { FormattedMessage } from "react-intl";
-import { Form } from "reactstrap";
+// import { Form } from "reactstrap";
 
 class DoctorSchedule extends Component {
   constructor(props) {
@@ -21,11 +21,11 @@ class DoctorSchedule extends Component {
   async componentDidMount() {
     let { language } = this.props;
 
-    console.log("moment vi", moment(new Date()).format("dddd - DD/MM"));
-    console.log(
-      "moment en",
-      moment(new Date()).locale("en").format("ddd - DD/MM")
-    );
+    // console.log("moment vi", moment(new Date()).format("dddd - DD/MM"));
+    // console.log(
+    //   "moment en",
+    //   moment(new Date()).locale("en").format("ddd - DD/MM")
+    // );
     let allDays = this.getAllDays(language);
     this.setState({
       allDays: allDays,
@@ -107,7 +107,7 @@ class DoctorSchedule extends Component {
   render() {
     let { allDays, allAvailableTime } = this.state;
     let { language } = this.props;
-    console.log("check state", this.state);
+    // console.log("check state available date", allAvailableTime);
     return (
       <>
         <div className="doctor-schedule">

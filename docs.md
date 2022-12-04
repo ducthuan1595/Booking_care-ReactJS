@@ -75,3 +75,4 @@ POST 67:
 - choose date (datePicker)
 - format ngay thang nam (moment)
 - find value co trung nhau hay khong (lodash)
+- format number (react-number-format)

@@ -69,6 +69,13 @@
                 "note": "Note",
                 "save": "SAVE",
                 "edit": "EDIT" 
+            },
+            "doctor-extra-info": {
+                "address-exam": "Examination address",
+                "price-exam": "Examination price",
+                "show-detail": "More detail",
+                "hidden-detail": "Hidden",
+                "pay-method-note": "The patient can pay with "
             }
         }
     }

@@ -143,21 +143,63 @@ class ManageDoctor extends Component {
   //select
   handleChange = async (selectedOption) => {
     this.setState({ selectedOption });
+    let { listPayment, listPrice, listProvince } = this.state; //get variable in this.state to render data in UI
     let res = await getDetailInforDoctor(selectedOption.value);
     if (res && res.errCode === 0 && res.data && res.data.Markdown) {
       let markdown = res.data.Markdown;
+      let addressClinic = "",
+        nameClinic = "",
+        note = "",
+        paymentId = "",
+        priceId = "",
+        provinceId = "",
+        selectPayment = "",
+        selectPrice = "",
+        selectProvince = "";
+
+      //get all data from server
+      if (res.data.Doctor_info) {
+        addressClinic = res.data.Doctor_info.addressClinic;
+        nameClinic = res.data.Doctor_info.nameClinic;
+        note = res.data.Doctor_info.note;
+        paymentId = res.data.Doctor_info.paymentId;
+        priceId = res.data.Doctor_info.priceId;
+        provinceId = res.data.Doctor_info.provinceId;
+        //find data selected
+        selectPayment = listPayment.find((item) => {
+          return item && item.value === paymentId;
+        });
+        selectPrice = listPrice.find((item) => {
+          return item && item.value === priceId;
+        });
+        selectProvince = listProvince.find((item) => {
+          return item && item.value === provinceId;
+        });
+        // console.log("check payment", findItem, listPayment);
+      }
       this.setState({
+        //set state when find selected
         contentHTML: markdown.contentHTML,
         contentMarkdown: markdown.contentMarkdown,
         description: markdown.description,
         hasOldData: true,
+        selectedPrice: selectPrice,
+        selectedPayment: selectPayment,
+        selectProvince: selectProvince,
+        addressClinic: addressClinic,
+        nameClinic: nameClinic,
+        note: note,
       });
     } else {
+      //no find assign empty string
       this.setState({
         contentHTML: "",
         contentMarkdown: "",
         description: "",
         hasOldData: false,
+        addressClinic: "",
+        nameClinic: "",
+        note: "",
       });
     }
   };

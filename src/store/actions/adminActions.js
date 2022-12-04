@@ -180,6 +180,7 @@ export const editUser = (data) => {
   return async (dispatch, getState) => {
     try {
       let res = await editUserApi(data);
+      console.log("<<check edit user", res);
       if (res) {
         toast.success("Update the user success!");
         dispatch(editUserSuccess());

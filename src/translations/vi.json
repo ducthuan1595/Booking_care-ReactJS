@@ -69,6 +69,13 @@
                 "note": "Ghi chú",
                 "save": "LƯU",
                 "edit": "LƯU THAY ĐỔI"
+            },
+            "doctor-extra-info": {
+                "address-exam": "Địa chỉ khám",
+                "price-exam": "Giá khám",
+                "show-detail": "Xem chi tiết",
+                "hidden-detail": "Ẩn bớt",
+                "pay-method-note": "Bệnh nhân có thể thanh toán bằng "
             }
         }
     }

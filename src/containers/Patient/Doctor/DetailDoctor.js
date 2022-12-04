@@ -5,6 +5,7 @@ import "./DetailDoctor.scss";
 import { getDetailInforDoctor } from "../../../services/userService";
 import { LANGUAGES } from "../../../utils";
 import DoctorSchedule from "./DoctorSchedule";
+import DoctorExtraInfo from "./DoctorExtraInfo";
 
 class DetailDoctor extends Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class DetailDoctor extends Component {
         <div>
           <HomeHeader isShowBanner={false} />
           <div className="doctor-detail-container">
-            <a className="link-title">
+            <a href="/" className="link-title">
               <i class="fas fa-home"></i>/<p>Bác sĩ nổi bật</p>
             </a>
             <div className="infor-doctor">
@@ -77,13 +78,9 @@ class DetailDoctor extends Component {
                   />
                 </div>
                 <div className="content-right">
-                  <div className="detail">
-                    <div className="location">
-                      <h6>benh vien hop luc</h6>
-                      <p>So 14 song ly - tieng trang</p>
-                    </div>
-                    <div className="price">Gia kham: $10</div>
-                  </div>
+                  <DoctorExtraInfo
+                    doctorIdFromParent={this.state.currentDoctorId}
+                  />
                 </div>
               </div>
             </div>
