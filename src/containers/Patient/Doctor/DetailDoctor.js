@@ -48,7 +48,7 @@ class DetailDoctor extends Component {
           <HomeHeader isShowBanner={false} />
           <div className="doctor-detail-container">
             <a href="/" className="link-title">
-              <i class="fas fa-home"></i>/<p>Bác sĩ nổi bật</p>
+              <i className="fas fa-home"></i>/<p>Bác sĩ nổi bật</p>
             </a>
             <div className="infor-doctor">
               <div

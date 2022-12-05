@@ -77,6 +77,18 @@
                 "hidden-detail": "Ẩn bớt",
                 "pay-method-note": "Bệnh nhân có thể thanh toán bằng "
             }
+        },
+        "booking-schedule": {
+            "title": "Thông tin đặt lịch khám bệnh",
+            "fullName": "Họ và tên",
+            "phoneNumber": "Số điện thoại",
+            "email": "Email",
+            "address": "Địa chỉ",
+            "reason": "Nguyên nhân khám bệnh",
+            "birthday": "Ngày tháng năm sinh",
+            "gender": "Giới tính",
+            "confirm": "Xác nhận",
+            "cancel": "Trở lại"
         }
     }
 }

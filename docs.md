@@ -76,3 +76,4 @@ POST 67:
 - format ngay thang nam (moment)
 - find value co trung nhau hay khong (lodash)
 - format number (react-number-format)
+- use Modal in (reactstrap)

@@ -77,6 +77,18 @@
                 "hidden-detail": "Hidden",
                 "pay-method-note": "The patient can pay with "
             }
+        },
+        "booking-schedule": {
+            "title": "Appointment booking medical information",
+            "fullName": "FullName",
+            "phoneNumber": "Phone Number",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Medical reasons",
+            "birthday": "Day of birth",
+            "gender": "Gender",
+            "confirm": "Confirm",
+            "cancel": "Cancel"
         }
     }
 }
