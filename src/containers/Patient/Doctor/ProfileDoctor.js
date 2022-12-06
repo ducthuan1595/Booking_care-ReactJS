@@ -68,7 +68,9 @@ class DefaultClass extends Component {
           <div>
             {time} . {date}
           </div>
-          <div>Free when booking schedule</div>
+          <div>
+            <FormattedMessage id="patient.booking-schedule.booking-free" />
+          </div>
         </>
       );
     }

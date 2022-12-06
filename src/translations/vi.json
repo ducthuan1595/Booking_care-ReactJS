@@ -88,7 +88,8 @@
             "birthday": "Ngày tháng năm sinh",
             "gender": "Giới tính",
             "confirm": "Xác nhận",
-            "cancel": "Trở lại"
+            "cancel": "Trở lại",
+            "booking-free": "Miễn phí khi đặt lịch"
         }
     }
 }

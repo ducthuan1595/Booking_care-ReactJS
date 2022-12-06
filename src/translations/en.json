@@ -88,7 +88,8 @@
             "birthday": "Day of birth",
             "gender": "Gender",
             "confirm": "Confirm",
-            "cancel": "Cancel"
+            "cancel": "Cancel",
+            "booking-free": "Free when booking schedule"
         }
     }
 }

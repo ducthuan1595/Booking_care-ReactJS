@@ -11,6 +11,7 @@ import * as actions from "../../../store/actions";
 import Select from "react-select";
 import { postPatientBookAppointment } from "../../../services/userService";
 import { toast } from "react-toastify";
+import moment from "moment";
 
 class BookingModal extends Component {
   constructor(props) {
@@ -94,6 +95,9 @@ class BookingModal extends Component {
 
   handleConfirmBooking = async () => {
     let date = new Date(this.state.birthday).getTime();
+    let timeString = this.buildTimeBooking(this.props.dataTime);
+    let doctorName = this.buildDoctorName(this.props.dataTime);
+    console.log("<<time string", doctorName);
     let res = await postPatientBookAppointment({
       fullName: this.state.fullName,
       phoneNumber: this.state.phoneNumber,
@@ -104,6 +108,9 @@ class BookingModal extends Component {
       doctorId: this.state.doctorId,
       selectedGender: this.state.selectedGender.value,
       timeType: this.state.timeType,
+      language: this.props.language,
+      timeString: timeString,
+      doctorName: doctorName,
     });
     console.log("<<check confirm res:", res.email);
     if (res && res.info.errCode === 0) {
@@ -114,12 +121,49 @@ class BookingModal extends Component {
     }
   };
 
+  capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  buildDoctorName = (dataTime) => {
+    let { language } = this.props;
+    if (dataTime !== !_.isEmpty(dataTime)) {
+      let name =
+        language === LANGUAGES.VI
+          ? `${dataTime.doctorData.lastName} ${dataTime.doctorData.firstName}`
+          : `${dataTime.doctorData.firstName} ${dataTime.doctorData.lastName}`;
+      return name;
+    }
+    return "";
+  };
+
+  buildTimeBooking = (dataTime) => {
+    let { language } = this.props;
+    if (dataTime !== !_.isEmpty(dataTime)) {
+      let time =
+        language === LANGUAGES.VI
+          ? dataTime.timeTypeData.value_vi
+          : dataTime.timeTypeData.value_en;
+      let date =
+        language === LANGUAGES.VI
+          ? moment.unix(+dataTime.date / 1000).format("dddd - DD/MM/YYYY")
+          : moment
+              .unix(+dataTime.date / 1000)
+              .locale("en")
+              .format("ddd - MM/DD/YYYY");
+      date = this.capitalizeFirstLetter(date);
+      return `${time} . ${date}`;
+    }
+    return "";
+  };
+
   render() {
     let { isOpenModal, isCloseModal, dataTime } = this.props;
     let doctorId = "";
     if (dataTime && !_.isEmpty(dataTime)) {
       doctorId = dataTime.doctorId;
     }
+    console.log(",,check language", typeof this.props.language);
 
     return (
       <>
