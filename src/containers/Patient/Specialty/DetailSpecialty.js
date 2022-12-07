@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
+import HomeHeader from "../../../containers/HomePage/Header/HomeHeader";
 
-class DefaultClass extends Component {
+class DetailSpecialty extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -18,7 +19,12 @@ class DefaultClass extends Component {
   render() {
     console.log("check state", this.state);
 
-    return <></>;
+    return (
+      <>
+        <HomeHeader />
+        <div style={{ height: 200, color: "red", marginTop: 100 }}>hello</div>
+      </>
+    );
   }
 }
 
@@ -32,4 +38,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DefaultClass);
+export default connect(mapStateToProps, mapDispatchToProps)(DetailSpecialty);

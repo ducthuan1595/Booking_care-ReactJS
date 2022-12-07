@@ -52,7 +52,7 @@ class VerifyEmail extends Component {
     return (
       <>
         <HomeHeader />
-        <div style={{ marginTop: 150, textAlign: "center" }}>
+        <div style={{ marginTop: 150, textAlign: "center", fontSize: 20 }}>
           {statusVerify === false ? (
             <div>Loading data...</div>
           ) : (

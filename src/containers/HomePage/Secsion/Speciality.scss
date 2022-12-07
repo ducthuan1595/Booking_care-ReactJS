@@ -29,15 +29,18 @@
       align-self: center;
       .image-item {
         margin: 0 5px;
-        background: url(../../../assets/images/doctor2.webp) top center/cover
-          no-repeat;
+        // background: url(../../../assets/images/doctor2.webp) top center/cover
+        //   no-repeat;
+        background-repeat: no-repeat;
+        background-position: center;
         padding-top: 50%;
         background-size: cover;
         height: 180px;
         border-radius: 5px;
       }
       p {
-        margin: 0 5px;
+        margin: 5px 0 5px 5px;
+        font-size: 14px;
         color: #646363;
       }
     }

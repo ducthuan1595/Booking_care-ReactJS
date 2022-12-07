@@ -77,3 +77,26 @@ POST 67:
 - find value co trung nhau hay khong (lodash)
 - format number (react-number-format)
 - use Modal in (reactstrap)
+
+# create router
+
+- App.js(create router)
+- ex: <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />//path in file constant.js, component is name file render ex: DetailDoctor.js
+- create constant:
+  export const path = {
+  DETAIL_DOCTOR: "/detail-doctor/:id"//path url
+  }
+- create handle onClick
+  - import {withRouter} from 'react-router'
+  - Add:
+    export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(Speciality)
+    );
+  - Create onclick:
+    handleViewDetailSpecialty = (item) => {
+    if (this.props.history) {
+    this.props.history.push(`detail-specialty/${item.id}`);//path
+    }
+    }
+  - Add attribute onclick in item:
+    onClick={() => this.handleViewDetailSpecialty(item)}

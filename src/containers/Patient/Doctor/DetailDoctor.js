@@ -17,6 +17,7 @@ class DetailDoctor extends Component {
   }
 
   async componentDidMount() {
+    // console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<");
     if (this.props.match.params.id) {
       let id = this.props.match.params.id;
       this.setState({

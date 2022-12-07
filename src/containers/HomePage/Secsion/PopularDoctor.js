@@ -38,7 +38,7 @@ class PopularDoctor extends Component {
     // console.log("check top doctor", this.props.topDoctorRedux);
     let allDoctors = this.state.arrDoctors;
     let { language } = this.props;
-    console.log("<<check all doctor", allDoctors);
+    // console.log("<<check all doctor", allDoctors);
     // allDoctors = allDoctors.concat(allDoctors).concat(allDoctors);
     let settings = {
       dots: false,
