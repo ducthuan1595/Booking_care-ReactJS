@@ -104,7 +104,7 @@ class ScheduleManage extends Component {
       toast.error("Invalid date");
     }
     if (selectedOption && _.isEmpty(selectedOption)) {
-      toast.error("Invalid seleced doctor");
+      toast.error("Invalid selected doctor");
       return;
     }
     let formatedDate = new Date(currentDate).getTime();

@@ -37,7 +37,8 @@
             "manage-handbook": "Manage handbook"
         },
         "doctor": {
-            "manage-schedule": "Manage schedule"
+            "manage-schedule": "Manage schedule",
+            "manage-patient": "Manage patient"
         }
     },
     "homepage": {
@@ -75,7 +76,9 @@
                 "price-exam": "Examination price",
                 "show-detail": "More detail",
                 "hidden-detail": "Hidden",
-                "pay-method-note": "The patient can pay with "
+                "pay-method-note": "The patient can pay with ",
+                "show-more": "See more",
+                "hide-away": "Hide away"
             }
         },
         "booking-schedule": {

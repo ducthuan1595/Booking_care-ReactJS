@@ -1,0 +1,137 @@
+:root {
+  --primary-color: #45c3d2;
+  --word-color: #555;
+  --border-color: #eee;
+}
+
+.detail-clinic-container {
+  // margin: 100px 50px;
+  // background-color: #f9f9f9;
+  background-color: #fff;
+  .detail-clinic-header {
+    margin: 50px 50px;
+    .image-clinic {
+      height: 280px;
+      width: 100%;
+      padding: 0 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+    .name-clinic {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 20px 0 8px;
+    }
+    .address-clinic {
+      font-size: 20px;
+      font-weight: 500;
+      color: #333;
+      font: 14px/1.5 "Montserrat", sans-serif;
+    }
+
+    .icon-map {
+      margin-right: 8px;
+      font-size: 16px;
+      color: #666;
+    }
+  }
+
+  .desc-clinic {
+    h2 {
+      color: var(--primary-color);
+    }
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font: 14px/1.5 "Montserrat", sans-serif;
+  }
+
+  .description-clinic {
+    margin: 50px 50px 0 50px;
+    padding-top: 20px;
+    h2 {
+      margin-bottom: 16px;
+    }
+  }
+  .hidden-desc-specialty {
+    // background-image: linear-gradient(#f9f9f9, #fefefe, #fff);
+    margin: 50px 50px 0 50px;
+    padding-top: 20px;
+    h2 {
+      margin-bottom: 16px;
+    }
+    height: 200px;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    // -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+  }
+  .toggle-detail-doctor {
+    color: var(--primary-color);
+    cursor: pointer;
+    background-color: #fff;
+    background-image: linear-gradient(#fff, #f9f9f9);
+    padding: 8px 50px 20px;
+  }
+
+  .select-province-doctor {
+    margin: 0px 50px;
+    select {
+      border: none;
+      border-radius: 5px;
+      padding: 8px 25px 8px 15px;
+      color: var(--word-color);
+      outline: none;
+    }
+  }
+
+  .detail-specialty-content {
+    margin: 30px 50px 0;
+    .each-doctor {
+      display: flex;
+      width: 100%;
+      background-color: #fff;
+      margin: 10px 0;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: 0 0 4px #20212447;
+
+      .content-left {
+        width: 50%;
+        margin: 10px;
+        border-right: 1px solid var(--border-color);
+        .profile-doctor .image {
+          // width: 400px !important;
+          padding: 16px 50px;
+        }
+        .price-exam {
+          display: none !important;
+        }
+        .profile-doctor .info {
+          margin-right: 30px;
+          color: var(--word-color);
+          h5 {
+            color: var(--primary-color) !important;
+          }
+        }
+      }
+      .content-right {
+        width: 50%;
+        // margin-left: 15px;
+        margin: 10px;
+        .doctor-schedule {
+          border-right: none !important;
+        }
+        .doctor-extra-info {
+          margin: 10px 0 10px !important;
+          padding-top: 10px;
+          border-top: 1px solid var(--border-color);
+        }
+      }
+    }
+  }
+}

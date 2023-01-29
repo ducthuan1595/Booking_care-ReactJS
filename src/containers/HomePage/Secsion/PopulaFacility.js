@@ -2,14 +2,43 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./PopulaFacility.scss";
 import { FormattedMessage } from "react-intl";
+import { withRouter } from "react-router";
 
 //react slick (arrow right or left)
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { getAllClinic } from "../../../services/userService";
+
 class PopulaFacility extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataClinics: [],
+    };
+  }
+
+  async componentDidMount() {
+    let res = await getAllClinic();
+    if (res && res.info.errCode === 0) {
+      this.setState({
+        dataClinics: res.info.data ? res.info.data : [],
+      });
+    }
+  }
+
+  handleDetailClinic = (clinic) => {
+    if(this.props.history) {
+      this.props.history.push(`detail-clinic/${clinic.id}`)
+    }
+  }
+
   render() {
+    const { dataClinics } = this.state;
+
+    console.log("check popularFaciliti state", this.state);
+
     let settings = {
       dots: false,
       infinite: true,
@@ -27,30 +56,20 @@ class PopulaFacility extends Component {
           <div className="home-title">Cơ sở y tế phổ biến</div>
           <div className="home-lists">
             <Slider {...settings}>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <p>Bệnh viện nhà tao</p>
-              </div>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <p>Bệnh viện nhà tao</p>
-              </div>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <p>Bệnh viện nhà tao</p>
-              </div>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <p>Bệnh viện nhà tao</p>
-              </div>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <p>Bệnh viện nhà tao</p>
-              </div>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <p>Bệnh viện nhà tao</p>
-              </div>
+              {dataClinics &&
+                dataClinics.length > 0 &&
+                dataClinics.map((item, index) => {
+                  return (
+                    <div className="image-items" key={index} onClick={()=>this.handleDetailClinic(item)}>
+                      <div
+                        className="image-item"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      ></div>
+                      <p>{item.name}</p>
+                    </div>
+                  );
+                })}
+
             </Slider>
           </div>
         </div>
@@ -69,4 +88,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PopulaFacility);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PopulaFacility));

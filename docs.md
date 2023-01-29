@@ -100,3 +100,12 @@ POST 67:
     }
   - Add attribute onclick in item:
     onClick={() => this.handleViewDetailSpecialty(item)}
+
+
+* create page manage patient for doctor
+ - menuApp.js (create path)
+ - declare translate in file vi.js and en.js
+ - App.js (find path to '/doctor' component: Doctor)
+ - declare Router for patient manage
+ - create PatientManage.js (build pages manage in UI)
+ 

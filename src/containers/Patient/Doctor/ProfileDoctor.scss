@@ -17,6 +17,15 @@
       }
     }
   }
+  .detail-doctor {
+    margin-left: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    :hover {
+      text-decoration: none;
+      color: #45c3d2;
+    }
+  }
   .price-exam {
   }
 }

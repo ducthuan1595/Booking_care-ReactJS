@@ -104,7 +104,8 @@ class BookingModal extends Component {
       email: this.state.email,
       address: this.state.address,
       reason: this.state.reason,
-      date: date,
+      birthday: date,
+      date: this.props.dataTime.date,
       doctorId: this.state.doctorId,
       selectedGender: this.state.selectedGender.value,
       timeType: this.state.timeType,
@@ -112,7 +113,7 @@ class BookingModal extends Component {
       timeString: timeString,
       doctorName: doctorName,
     });
-    console.log("<<check confirm res:", res.email);
+    console.log("<<check confirm res:", res);
     if (res && res.info.errCode === 0) {
       toast.success("Book a new appointment succeed!");
       this.props.isCloseModal();
@@ -163,7 +164,7 @@ class BookingModal extends Component {
     if (dataTime && !_.isEmpty(dataTime)) {
       doctorId = dataTime.doctorId;
     }
-    console.log(",,check language", typeof this.props.language);
+    // console.log(",,check dataTime", dataTime);
 
     return (
       <>

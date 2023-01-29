@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "./HomeHeader.scss";
 import { FormattedMessage } from "react-intl"; //format language
 import { LANGUAGES } from "../../../utils"; //type language
@@ -20,9 +21,10 @@ class HomeHeader extends Component {
           <div className="home-header">
             <div className="header-left">
               <i className="fas fa-bars"></i>
-              <a href="/">
+              <Link to='/home'><div className="header-image"></div></Link>
+              {/* <a href="/">
                 <div className="header-image"></div>
-              </a>
+              </a> */}
             </div>
             <div className="header-center">
               <div className="header-item">

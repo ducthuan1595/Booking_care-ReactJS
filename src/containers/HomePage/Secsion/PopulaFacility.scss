@@ -10,26 +10,35 @@
     font-weight: 600;
     margin-bottom: 34px;
   }
-  // button:first-child {
-  //   left: 0 !important;
-  //   // right: 0 !important;
-  //   z-index: 10 !important;
-  // }
-  // button:last-child {
-  //   // left: 0 !important;
-  //   right: 0 !important;
-  //   z-index: 10 !important;
-  // }
+  button:first-child {
+    // left: 0 !important;
+    background-color: #d4d4d447;
+    // height: 27px !important;
+    // opacity: 0.6;
+    // right: 0 !important;
+    z-index: 10 !important;
+    padding-top: 1px;
+  }
+  button:last-child {
+    background-color: #d4d4d447;
+    // height: 27px !important;
+    // opacity: 0.6;
+    // left: 0 !important;
+    // right: 0 !important;
+    z-index: 10 !important;
+    padding-top: 1px;
+  }
   .home-lists {
     display: block;
     justify-content: center;
     align-content: center;
     .image-items {
       align-self: center;
+      cursor: pointer;
       .image-item {
         margin: 0 5px;
-        background: url(../../../assets/images/hospital.jpg) top center/cover
-          no-repeat;
+        // background: url(../../../assets/images/hospital.jpg) top center/cover
+        //   no-repeat;
         padding-top: 50%;
         background-size: cover;
         height: 180px;

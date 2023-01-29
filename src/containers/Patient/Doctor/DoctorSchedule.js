@@ -30,6 +30,15 @@ class DoctorSchedule extends Component {
     //   moment(new Date()).locale("en").format("ddd - DD/MM")
     // );
     let allDays = this.getAllDays(language);
+    if(this.props.doctorIdFromParent) {
+      let res = await getScheduleDoctorByDateService(
+        this.props.doctorIdFromParent,
+        allDays[0].value
+      );
+      this.setState({
+        allAvailableTime: res.data ? res.data : [],
+      });
+    }
     this.setState({
       allDays: allDays,
     });
@@ -129,7 +138,7 @@ class DoctorSchedule extends Component {
       dataScheduleTimeModal,
     } = this.state;
     let { language } = this.props;
-    // console.log("check state available date", allAvailableTime);
+    // console.log("check this.doctorIdFromParent", this.props.doctorIdFromParent);
     return (
       <>
         <div className="doctor-schedule">

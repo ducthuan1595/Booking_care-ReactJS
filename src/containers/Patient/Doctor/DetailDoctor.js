@@ -36,6 +36,7 @@ class DetailDoctor extends Component {
     // console.log("check state detail dcotro", this.state);
     //console.log(this.props.match.params.id);//get id doctor
     let { detailDoctor } = this.state;
+    console.log('check detailDoctor', detailDoctor)
     let { language } = this.props;
     let nameEn = "",
       nameVi = "";

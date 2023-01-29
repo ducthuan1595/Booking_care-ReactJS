@@ -7,11 +7,12 @@ import { getProfileDoctorService } from "../../../services/userService";
 import NumberFormat from "react-number-format";
 import _ from "lodash";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
-class DefaultClass extends Component {
+class ProfileDoctor extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { 
       dataProfile: {},
     };
   }
@@ -39,7 +40,7 @@ class DefaultClass extends Component {
     if (this.props.language !== prevProps.language) {
     }
     if (this.props.doctorId !== prevProps.doctorId) {
-      // this.getInfoDoctor(this.props.doctorId);
+      
     }
   }
 
@@ -78,8 +79,16 @@ class DefaultClass extends Component {
 
   render() {
     let { dataProfile } = this.state;
-    let { language, isShowDescriptionDoctor, dataTime } = this.props;
-    // console.log("check props", this.props);
+    let {
+      language,
+      doctorId,
+      isShowDescriptionDoctor,
+      dataTime,
+      isShowLinkProfileDoctor,
+      isShowPriceProfileDoctor,
+    } = this.props;
+    // console.log("check doctorId", doctorId);
+
     let nameEn = "",
       nameVi = "";
     if (dataProfile.data && dataProfile.data.positionData) {
@@ -130,27 +139,36 @@ class DefaultClass extends Component {
               )}
             </div>
           </div>
-          <div className="price-exam">
-            <FormattedMessage id="patient.detail-doctor.doctor-extra-info.price-exam" />
-            :{" "}
-            <span>
-              {language === LANGUAGES.VI ? (
-                <NumberFormat
-                  value={priceVi}
-                  thousandSeparator={true}
-                  displayType={"text"}
-                  suffix={"VND"}
-                />
-              ) : (
-                <NumberFormat
-                  value={priceEn}
-                  thousandSeparator={true}
-                  displayType={"text"}
-                  prefix={"$"}
-                />
-              )}
-            </span>
-          </div>
+          {isShowLinkProfileDoctor === true && (
+            <div className="detail-doctor">
+              <Link to={`/detail-doctor/${doctorId}`}>
+                <FormattedMessage id="patient.detail-doctor.doctor-extra-info.show-more" />
+              </Link>
+            </div>
+          )}
+          {!isShowPriceProfileDoctor&& (
+            <div className="price-exam">
+              <FormattedMessage id="patient.detail-doctor.doctor-extra-info.price-exam" />
+              :{" "}
+              <span>
+                {language === LANGUAGES.VI ? (
+                  <NumberFormat
+                    value={priceVi}
+                    thousandSeparator={true}
+                    displayType={"text"}
+                    suffix={"VND"}
+                  />
+                ) : (
+                  <NumberFormat
+                    value={priceEn}
+                    thousandSeparator={true}
+                    displayType={"text"}
+                    prefix={"$"}
+                  />
+                )}
+              </span>
+            </div>
+          )}
         </div>
       </>
     );
@@ -167,4 +185,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DefaultClass);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileDoctor);

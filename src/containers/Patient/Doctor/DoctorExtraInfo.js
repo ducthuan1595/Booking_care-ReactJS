@@ -15,7 +15,18 @@ class DoctorExtraInfo extends Component {
     };
   }
 
-  async componentDidMount() {}
+  async componentDidMount() {
+    if (this.props.doctorIdFromParent) {
+      let res = await getExtraInfoDoctorByIdService(
+        this.props.doctorIdFromParent
+      );
+      if (res) {
+        this.setState({
+          extraInfo: res.info.data,
+        });
+      }
+    }
+  }
 
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.language !== prevProps.language) {
