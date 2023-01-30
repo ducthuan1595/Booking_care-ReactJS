@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import HomeHeader from "../../HomePage/Header/HomeHeader";
+import HomeFooter from "../../HomePage/Header/HomeFooter";
 import "./DetailDoctor.scss";
 import { getDetailInforDoctor } from "../../../services/userService";
 import { LANGUAGES } from "../../../utils";
 import DoctorSchedule from "./DoctorSchedule";
 import DoctorExtraInfo from "./DoctorExtraInfo";
+import LikeAndShare from "../socialPlugin/LikeAndShare";
+import Comment from "../socialPlugin/Comment";
 
 class DetailDoctor extends Component {
   constructor(props) {
@@ -36,7 +39,7 @@ class DetailDoctor extends Component {
     // console.log("check state detail dcotro", this.state);
     //console.log(this.props.match.params.id);//get id doctor
     let { detailDoctor } = this.state;
-    console.log('check detailDoctor', detailDoctor)
+    console.log("check detailDoctor", detailDoctor);
     let { language } = this.props;
     let nameEn = "",
       nameVi = "";
@@ -44,6 +47,11 @@ class DetailDoctor extends Component {
       nameVi = `${detailDoctor.positionData.value_vi}, ${detailDoctor.lastName} ${detailDoctor.firstName}`;
       nameEn = `${detailDoctor.positionData.value_en}, ${detailDoctor.firstName} ${detailDoctor.lastName}`;
     }
+
+    let currentURL =
+      +process.env.REACT_APP_IS_LOCALHOST === 1 ? "https://www.facebook.com/Sao-Gi%E1%BB%9D-415356329307334" : window.location.href;
+
+      console.log(currentURL)
     return (
       <>
         <div>
@@ -70,6 +78,9 @@ class DetailDoctor extends Component {
                       {detailDoctor.Markdown.description}
                     </span>
                   )}
+                <div className="like-and-share">
+                  <LikeAndShare dataHref={currentURL} />
+                </div>
               </div>
             </div>
             <div className="schedule-doctor">
@@ -99,33 +110,11 @@ class DetailDoctor extends Component {
                   )}
               </div>
             </div>
-            <div className="comment-doctor">
-              <h3>Fellback of patients</h3>
-              <div className="patients">
-                <div className="patient">
-                  <div className="infor-patient">
-                    <div>bui hy thoj</div>
-                    <i>da kham 01/05/1995</i>
-                  </div>
-                  <p>exaclly</p>
-                </div>
-                <div className="patient">
-                  <div className="infor-patient">
-                    <div>bui hy thoj</div>
-                    <i>da kham 01/05/1995</i>
-                  </div>
-                  <p>exaclly</p>
-                </div>
-                <div className="patient">
-                  <div className="infor-patient">
-                    <div>bui hy thoj</div>
-                    <i>da kham 01/05/1995</i>
-                  </div>
-                  <p>exaclly</p>
-                </div>
-              </div>
-            </div>
           </div>
+          <div className="comment">
+            <Comment dataHref={currentURL} width={"100%"} />
+          </div>
+          <HomeFooter />
         </div>
       </>
     );
