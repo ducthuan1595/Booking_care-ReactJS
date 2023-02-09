@@ -12,16 +12,16 @@
   }
   button:first-child {
     left: 0 !important;
-    background-color: #65aeb5;
+    background-color: #dfe2e25e;
     height: 27px !important;
-    opacity: 0.6;
+    opacity: 1;
     // right: 0 !important;
     z-index: 10 !important;
   }
   button:last-child {
-    background-color: #65aeb5;
+    background-color: #dfe2e25e;
     height: 27px !important;
-    opacity: 0.6;
+    opacity: 1;
     // left: 0 !important;
     right: 0 !important;
     z-index: 10 !important;
@@ -33,12 +33,15 @@
     .image-items {
       display: flex !important;
       justify-content: center;
+      cursor: pointer;
       // align-items: center;
       // flex-direction: column;
       .image-item {
         // margin: 0 5px;
         background: url(../../../assets/images/science1.jfif) top center/cover
           no-repeat;
+        // background-repeat: no-repeat;
+        // background-position: center;
         padding-top: 25%;
         background-size: cover;
         // object-fit: contain;

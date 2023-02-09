@@ -1,0 +1,82 @@
+.handbook.row {
+  margin: 60px 50px;
+  flex-wrap: unset;
+  .handbook-container {
+    padding: 0px 6px;
+    background-color: #f6f6f6;
+    .link-title {
+      display: flex;
+      // margin: 60px 0;
+      color: rgb(34, 107, 235);
+      text-decoration: none;
+      i {
+        margin-top: 3px;
+      }
+      p {
+        margin-left: 10px;
+        margin-top: 0;
+      }
+    }
+    .handbook-head {
+      .handbook-image {
+        height: 500px;
+        width: 100%;
+        padding: 0 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .handbook-title {
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        // font: 14px/1.5 'Montserrat', sans-serif;
+      }
+      .like-and-share {
+        // text-align: right;
+      }
+      .handbook-attention {
+        background-color: #c2ddc2;
+        color: #3bab3d;
+        padding: 10px 8px;
+        border-radius: 6px;
+        margin-top: 10px;
+        .icon-handbook {
+          font-size: 20px;
+          margin-right: 10px;
+          color: #d5b345;
+        }
+      }
+    }
+    .handbook-description {
+      margin-top: 30px;
+    }
+
+    .comment {
+      margin-top: 60px;
+    }
+  }
+  .thumb-vertical {
+    // transform: translateY(0px) !important;
+  }
+
+  .side-bar {
+    padding: 30px 30px 0 30px;
+    .side-bar-title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .side-bar-image {
+      height: 150px;
+        width: 100%;
+        padding: 0 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .side-bar-name {
+      color: #454343;
+      margin-bottom: 20px;
+    }
+  }
+}

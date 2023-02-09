@@ -6,10 +6,11 @@
         "choose-clinic": "Choose clinic",
         "doctor": "Doctor",
         "good-doctor": "Choose good doctor",
-        "package-check": "Package check",
-        "general-health-check": "Genaral health check",
+        "handbook": "Handbook",
+        "info-about-health": "Information more about health",
         "help": "Support",
-        "welcome": "Welcome, "
+        "welcome": "Welcome, ",
+        "about-us": "About us"
     },
     "banner": {
         "title1": "MEDICAL BACKGROUND",
@@ -93,6 +94,11 @@
             "confirm": "Confirm",
             "cancel": "Cancel",
             "booking-free": "Free when booking schedule"
+        },
+        "handbook": {
+            "description": "The information's sure exactly, we promised about entire the references supply by us. Thank's for our servers",
+            "author": "Author: Booking Care",
+            "focus": "Focus"
         }
     }
 }

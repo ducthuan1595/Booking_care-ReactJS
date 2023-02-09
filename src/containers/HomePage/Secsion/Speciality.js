@@ -51,7 +51,7 @@ class Speciality extends Component {
     return (
       <div className="home-speciality">
         <div className="home-page-speciality">
-          <div className="home-speciality-title">Chuyên gia phổ biến</div>
+          <div id="specialty" className="home-speciality-title"><FormattedMessage id="home-header.speciality" /></div>
           <div className="home-speciality-lists">
             <Slider {...settings}>
               {dataSpecialty &&

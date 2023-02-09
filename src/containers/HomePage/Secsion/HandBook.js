@@ -2,14 +2,42 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./HandBook.scss";
 import { FormattedMessage } from "react-intl";
+import { withRouter } from "react-router";
 
 //react slick (arrow right or left)
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { getAllHandbook } from "../../../services/userService";
+
 class HandBook extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataHandbooks: [],
+    };
+  }
+
+  async componentDidMount() {
+    let res = await getAllHandbook();
+    if (res && res.info.errCode === 0) {
+      this.setState({
+        dataHandbooks: res.info.data ? res.info.data : [],
+      });
+    }
+  }
+
+  handleDetailHandbook = (item) => {
+    if(this.props.history) {
+      this.props.history.push(`detail-handbook/${item.id}`)
+    }
+  }
+
   render() {
+    let { dataHandbooks } = this.state;
+    // console.log("data handbook vs state", this.state);
+
     let settings = {
       dots: false,
       infinite: true,
@@ -19,39 +47,27 @@ class HandBook extends Component {
       // fade: true,
     };
     return (
-      <div className="home-hand-book">
+      <div id="handbook" className="home-hand-book">
         <div className="home-page-content">
-          <div className="home-title">Hand book</div>
+          <div className="home-title">
+            <FormattedMessage id="home-header.handbook" />
+          </div>
           <div className="home-lists">
             <Slider {...settings}>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <span>
-                  Review our new hospital is building addtion in the US on
-                  August
-                </span>
-              </div>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <span>
-                  Review our new hospital is building addtion in the US on
-                  August
-                </span>
-              </div>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <span>
-                  Review our new hospital is building addtion in the US on
-                  August
-                </span>
-              </div>
-              <div className="image-items">
-                <div className="image-item"></div>
-                <span>
-                  Phó giao sư tiến sĩ, chuyên gia cao cấp, học viện hàm lân
-                  Trương Đức Thuận
-                </span>
-              </div>
+              {dataHandbooks &&
+                dataHandbooks.length > 0 &&
+                dataHandbooks.map((item, index) => {
+                  return (
+                    <div key={index} className="image-items"
+                    onClick={()=>this.handleDetailHandbook(item)}>
+                      <div
+                        className="image-item"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      ></div>
+                      <span>{item.description}</span>
+                    </div>
+                  );
+                })}
             </Slider>
           </div>
         </div>
@@ -70,4 +86,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HandBook);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HandBook));

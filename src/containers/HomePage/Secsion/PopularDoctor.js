@@ -52,7 +52,7 @@ class PopularDoctor extends Component {
       cssEase: "linear",
     };
     return (
-      <div className="home-popular-doctor">
+      <div id="doctor" className="home-popular-doctor">
         <div className="home-page-content">
           <div className="home-title">
             <FormattedMessage id="homepage.outstanding-writter" />
@@ -81,7 +81,7 @@ class PopularDoctor extends Component {
                         style={{ backgroundImage: `url(${imageBase64})` }}
                       ></div>
                       <div>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
-                      <p>Bệnh viện nhà tao</p>
+                      {/* <p>Bệnh viện nhà tao</p> */}
                     </div>
                   );
                 })}

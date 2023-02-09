@@ -20,10 +20,10 @@ class HomeFooter extends Component {
             <i>
               &copy; Thuan Truong, <em>contact:</em>{" "}
             </i>
-            <a href="#">
+            <a href="https://facebook.com">
               <i className="fab fa-facebook-square facebook"></i>
             </a>
-            <a href="#">
+            <a href="https://youtube.com">
               <i className="fab fa-google-plus-square google"></i>
             </a>
           </div>

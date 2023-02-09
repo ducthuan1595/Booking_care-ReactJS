@@ -86,6 +86,16 @@ const getListPatientForDoctor = (data) => {
 const postSendRemedy = (data) => {
   return axios.post('/api/send-remedy', data)
 }
+const postHandbook = (data) => {
+  return axios.post('/api/create-new-handbook', data)
+}
+const getAllHandbook = () => {
+  return axios.get('/api/get-all-handbook')
+}
+const getDetailHandbook = (inputId) => {
+  return axios.get(`/api/get-detail-handbook?id=${inputId.id}`)
+}
+
 export {
   handleLoginApi,
   getAllUsers,
@@ -110,5 +120,8 @@ export {
   getAllClinic,
   getDetailClinicById,
   getListPatientForDoctor,
-  postSendRemedy
+  postSendRemedy,
+  postHandbook,
+  getAllHandbook,
+  getDetailHandbook
 };

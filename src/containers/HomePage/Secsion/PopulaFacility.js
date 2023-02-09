@@ -51,9 +51,9 @@ class PopulaFacility extends Component {
       pauseOnHover: true,
     };
     return (
-      <div className="home-popular-facility">
+      <div id="clinic" className="home-popular-facility">
         <div className="home-page-content">
-          <div className="home-title">Cơ sở y tế phổ biến</div>
+          <div className="home-title"><FormattedMessage id="home-header.health-facilities" /></div>
           <div className="home-lists">
             <Slider {...settings}>
               {dataClinics &&

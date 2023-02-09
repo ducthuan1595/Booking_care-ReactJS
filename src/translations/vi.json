@@ -6,10 +6,11 @@
         "choose-clinic": "Chọn bệnh viện phòng khám",
         "doctor": "Bác sĩ",
         "good-doctor": "Chọn bác sĩ giỏi",
-        "package-check": "Gói khám",
-        "general-health-check": "Khám sức khỏe tổng quát",
+        "handbook": "Sổ tay",
+        "info-about-health": "Thông tin thêm về sức khỏe",
         "help": "Trợ giúp",
-        "welcome": "Xin chào, "
+        "welcome": "Xin chào, ",
+        "about-us": "Về chúng tôi"
     },
     "banner": {
         "title1": "NỀN TẢNG Y TẾ",
@@ -93,6 +94,11 @@
             "confirm": "Xác nhận",
             "cancel": "Trở lại",
             "booking-free": "Miễn phí khi đặt lịch"
+        },
+        "handbook": {
+            "description": "Đây là thông tin đã được chúng tôi kiểm chứng, chúng tôi xin cam kết nếu bất kỳ sai sót nào. Cảm ơn đã sử dụng dịch vụ của chúng tôi!",
+            "author": "Tác giả: Booking Care",
+            "focus": "Tiêu điểm"
         }
     }
 }

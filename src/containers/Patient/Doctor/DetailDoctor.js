@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import HomeHeader from "../../HomePage/Header/HomeHeader";
 import HomeFooter from "../../HomePage/Header/HomeFooter";
 import "./DetailDoctor.scss";
@@ -49,17 +50,21 @@ class DetailDoctor extends Component {
     }
 
     let currentURL =
-      +process.env.REACT_APP_IS_LOCALHOST === 1 ? "https://www.facebook.com/Sao-Gi%E1%BB%9D-415356329307334" : window.location.href;
+      +process.env.REACT_APP_IS_LOCALHOST === 1
+        ? "https://www.facebook.com/Sao-Gi%E1%BB%9D-415356329307334"
+        : window.location.href;
 
-      console.log(currentURL)
+    console.log(currentURL);
     return (
       <>
         <div>
           <HomeHeader isShowBanner={false} />
           <div className="doctor-detail-container">
-            <a href="/" className="link-title">
-              <i className="fas fa-home"></i>/<p>Bác sĩ nổi bật</p>
-            </a>
+            <Link to="/home" className="link-title">
+              {/* <div > */}
+                <i className="fas fa-home"></i>/<p>Bác sĩ nổi bật</p>
+              {/* </div> */}
+            </Link>
             <div className="infor-doctor">
               <div
                 className="image"

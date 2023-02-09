@@ -129,6 +129,7 @@ class ScheduleManage extends Component {
       doctorId: selectedOption.value,
       formatedDate: "" + formatedDate,
     });
+    console.log('check res schedule ', res)
     if (res && res.errCode === 0) {
       toast.success("Save schedule success!");
     } else {
@@ -138,7 +139,7 @@ class ScheduleManage extends Component {
   };
 
   render() {
-    // console.log("check state", this.state);
+    // console.log("check state", this.props.fetchAllDoctor());
     // console.log("check props", this.props);
     let { rangeTime } = this.state;
     let { language } = this.props;

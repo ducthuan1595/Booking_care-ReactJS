@@ -13,14 +13,16 @@ class HomeAbout extends Component {
     return (
       <div className="home-about">
         <div className="home-page-content">
-          <div className="home-title">About our</div>
+          <div className="home-title">
+            <FormattedMessage id="home-header.about-us" />
+          </div>
           <div className="home-lists">
             {/* <div className="video-our"> */}
             <iframe
               width="600"
               height="300"
-              src="https://www.youtube.com/embed/RzhAS_GnJIc?list=RDRzhAS_GnJIc"
-              title="Safe & Sound feat. The Civil Wars (The Hunger Games: Songs From District 12 And Beyond)"
+              src="https://www.youtube.com/embed/tgbNymZ7vqY"
+              title="The Most Expensive Healthcare In The World"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -28,12 +30,19 @@ class HomeAbout extends Component {
             {/* </div> */}
             <div className="about-our">
               <p>
-                My name is THUAN, 27 old years. Current, I'm a developer, With
-                my hard wishes wants discover and conquer this world...
+                If you get sick or injured in any of these places, don't worry,
+                you'll be in good hands... hands that are deep in your pockets
+                that is! Here's the countries that charge the most for medical
+                bills!
               </p>
               <p>
-                The song hits differently when youre a Hunger Games Fan. It
-                makes you wanna read the whole thing
+                What if hospitals were designed and built to promote wellness
+                and not just to fix and cure human beings? Architect Jerry Ong
+                brought this vision into reality in his work Little did
+                architect Jerry Ong expect when he first undertook the design of
+                Khoo Teck Puat hospital in Singapore that he would be pioneering
+                brand new approaches, ideas and innovations in the architecture
+                of wellness.
               </p>
             </div>
           </div>

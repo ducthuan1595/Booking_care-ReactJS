@@ -4,61 +4,135 @@ import { Link } from "react-router-dom";
 import "./HomeHeader.scss";
 import { FormattedMessage } from "react-intl"; //format language
 import { LANGUAGES } from "../../../utils"; //type language
+import * as actions from "../../../store/actions"; //actions of redux
+import { getTopDoctorHomeService } from "../../../services/userService";
 
 import { changeLanguageApp } from "../../../store/actions/appActions"; //redux language
 
 class HomeHeader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      listDoctors: [],
+      inputValue: "",
+      isShowAllDoctors: false,
+    };
+  }
+
+  async componentDidMount() {
+    this.getAllDoctor();
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.inputValue !== this.state.inputValue) {
+      let remainingDoctor = this.state.listDoctors.filter((item) => {
+        if (item.label.toLowerCase().includes(this.state.inputValue)) {
+          return item;
+        }
+      });
+      this.setState({
+        listDoctors: remainingDoctor,
+      });
+    }
+  }
+
+  getAllDoctor = async () => {
+    let res = await getTopDoctorHomeService("");
+    let dataSelect = this.buildDataInputSelect(res.data);
+    this.setState({
+      listDoctors: dataSelect,
+    });
+  };
+
+  buildDataInputSelect = (input) => {
+    let result = [];
+    let { language } = this.props;
+    if (input && input.length > 0) {
+      input.map((item, index) => {
+        let object = {};
+        let labelVi = `${item.lastName} ${item.firstName}`;
+        let labelEn = `${item.firstName} ${item.lastName}`;
+        let positionDataVi = `${item.positionData.value_vi}`;
+        let positionDataEn = `${item.positionData.value_en}`;
+
+        object.label = language === LANGUAGES.VI ? labelVi : labelEn;
+        object.role =
+          language === LANGUAGES.VI ? positionDataVi : positionDataEn;
+        // object.value = item.id;
+        result.push(object);
+      });
+      return result;
+    }
+  };
+
   handleLanguage = (language) => {
     this.props.changeLanguageAppRedux(language);
   };
 
+  handleInputSearchDoctor = (e) => {
+    let inputValue = e.target.value;
+    let remainingDoctor = this.state.listDoctors.filter((item) => {
+      if (item.label.toLowerCase().includes(inputValue)) {
+        return item;
+      }
+    });
+    // console.log('name doctor', remainingDoctor)
+      this.setState({
+        listDoctors: remainingDoctor,
+        inputValue: inputValue,
+        isShowAllDoctors: true,
+      });
+  };
+
   render() {
-    let language = this.props.language;
-    // console.log("check userInfo", this.props.userInfo);
+    let { language, allDoctors } = this.props.language;
+    let { listDoctors, isShowAllDoctors, inputValue } = this.state;
+    // console.log("check state", this.state);
     return (
       <>
         <div className="home-header-container">
           <div className="home-header">
             <div className="header-left">
               <i className="fas fa-bars"></i>
-              <Link to='/home'><div className="header-image"></div></Link>
+              <Link to="/home">
+                <div className="header-image"></div>
+              </Link>
               {/* <a href="/">
                 <div className="header-image"></div>
               </a> */}
             </div>
             <div className="header-center">
-              <div className="header-item">
+              <a href="#specialty" className="header-item">
                 <div>
                   <FormattedMessage id="home-header.speciality" />
                 </div>
                 <p>
                   <FormattedMessage id="home-header.search-doctor" />
                 </p>
-              </div>
-              <div className="header-item">
+              </a>
+              <a href="#clinic" className="header-item">
                 <div>
                   <FormattedMessage id="home-header.health-facilities" />
                 </div>
                 <p>
                   <FormattedMessage id="home-header.choose-clinic" />
                 </p>
-              </div>
-              <div className="header-item">
+              </a>
+              <a href="#doctor" className="header-item">
                 <div>
                   <FormattedMessage id="home-header.doctor" />
                 </div>
                 <p>
                   <FormattedMessage id="home-header.good-doctor" />
                 </p>
-              </div>
-              <div className="header-item">
+              </a>
+              <a href="#handbook" className="header-item">
                 <div>
-                  <FormattedMessage id="home-header.package-check" />
+                  <FormattedMessage id="home-header.handbook" />
                 </div>
                 <p>
-                  <FormattedMessage id="home-header.general-health-check" />
+                  <FormattedMessage id="home-header.info-about-health" />
                 </p>
-              </div>
+              </a>
             </div>
             <div className="header-right">
               <div className="header-tranlate">
@@ -105,12 +179,32 @@ class HomeHeader extends Component {
                 <FormattedMessage id="banner.title2" />
               </p>
             </div>
+            <div id="search-modal">
             <div className="home-search">
               <i className="fas fa-search"></i>
               {/* change placelhoder language */}
               <FormattedMessage id="banner.find-doctor">
-                {(msg) => <input placeholder={msg} type="text" />}
+                {(msg) => (
+                  <input
+                    placeholder={msg}
+                    type="text"
+                    value={inputValue}
+                    onInput={(e) => this.handleInputSearchDoctor(e)}
+                  />
+                )}
               </FormattedMessage>
+            </div>
+            <ul className="home-search-modal">
+              {listDoctors &&
+                isShowAllDoctors === true &&
+                listDoctors.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      {item.role} {item.label}
+                    </li>
+                  );
+                })}
+            </ul>
             </div>
             <div className="home-lists">
               <div className="list-item">
@@ -162,12 +256,14 @@ const mapStateToProps = (state) => {
     isLoggedIn: state.user.isLoggedIn,
     language: state.app.language,
     userInfo: state.user.userInfo,
+    allDoctors: state.admin.allDoctors,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language)),
+    fetchAllDoctor: () => dispatch(actions.fetchAllDoctors()),
   };
 };
 

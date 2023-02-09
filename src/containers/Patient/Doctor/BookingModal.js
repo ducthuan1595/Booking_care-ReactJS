@@ -119,7 +119,7 @@ class BookingModal extends Component {
       timeString: timeString,
       doctorName: doctorName,
     });
-    // console.log("<<check confirm res:", res);
+    console.log("<<check confirm res:", res);
     if (res && res.info.errCode === 0) {
       this.setState({
         isShowLoading: false,
