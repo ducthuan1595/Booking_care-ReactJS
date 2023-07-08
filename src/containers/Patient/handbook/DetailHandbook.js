@@ -38,7 +38,6 @@ class DetailHandbook extends Component {
       let res = await getDetailHandbook({
         id: id,
       });
-      // console.log('check handbook res when mount', res)
       if (res && res.info.errCode === 0) {
         let data = res.info.data;
         let allHandbook = [];
@@ -61,6 +60,31 @@ class DetailHandbook extends Component {
 
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.language !== prevProps.language) {
+    }
+  }
+
+  handleDetailHandbook = async(id) => {
+    if(this.props.history) {
+      this.props.history.push(`${id}`)
+    }
+    let res = await getDetailHandbook({
+      id: id,
+    });
+    if (res && res.info.errCode === 0) {
+      let data = res.info.data;
+      let allHandbook = [];
+      if (data.allHandbook) {
+        allHandbook = data.allHandbook.filter((item, index) => {
+          return item.id !== data.id;
+        });
+      }
+      data.allHandbook = allHandbook;
+      if (data) {
+        this.setState({
+          handbookId: data,
+          allHandbook: data.allHandbook,
+        });
+      }
     }
   }
 
@@ -124,17 +148,19 @@ class DetailHandbook extends Component {
                 allHandbook.length > 0 &&
                 allHandbook.map((item, index) => {
                   return (
-                    <>
+                    <div key={item.id}>
                       <div
                         className="side-bar-image"
                         style={{
                           backgroundImage: `url(${
                             item.image ? item.image : ""
                           })`,
+                          cursor: 'pointer'
                         }}
+                        onClick={()=> this.handleDetailHandbook(item.id)}
                       ></div>
                       <p className="side-bar-name">{item.description}</p>
-                    </>
+                    </div>
                   );
                 })}
             </div>

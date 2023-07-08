@@ -8,6 +8,9 @@ import ManageDoctor from "../containers/System/Admin/ManageDoctor";
 import ManageSpecialty from "../containers/System/Specialty/ManageSpecilty";
 import ManageClinic from "../containers/System/clinic/ManageClinic";
 import ManageHandbook from '../containers/System/handbook/ManageHandbook';
+// import EditSpecialty from "../containers/System/Specialty/EditSpecialty";
+import ListSpecialty from "../containers/System/Specialty/ListSpecialty";
+import EditSpecialty from "../containers/System/Specialty/EditSpecialty";
 
 class System extends Component {
   render() {
@@ -24,6 +27,14 @@ class System extends Component {
               <Route
                 path="/system/manage-specialty"
                 component={ManageSpecialty}
+              />
+              <Route
+                path="/system/list-specialty"
+                component={ListSpecialty}
+              />
+              <Route
+                path="/system/edit-specialty/:id"
+                component={EditSpecialty}
               />
               <Route
                 path="/system/manage-clinic"

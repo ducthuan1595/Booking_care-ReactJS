@@ -119,6 +119,7 @@ class DetailSpecialty extends Component {
       isToggleDetailDoctor: status,
     });
   };
+  
   render() {
     let {
       arrDoctorId,

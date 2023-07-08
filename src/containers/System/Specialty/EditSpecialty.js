@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { FormattedMessage } from "react-intl";
 import "./ManageSpecialty.scss";
 import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
 import { LANGUAGES, CommonUtils } from "../../../utils"; // ask redux current language is be used
-import { postNewSpecialty, editSpecialty } from "../../../services/userService";
+import { getAllSpecialty, editSpecialty } from "../../../services/userService";
 import { toast } from "react-toastify";
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
-class ManageSpecialty extends Component {
+class EditSpecialty extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,10 +17,36 @@ class ManageSpecialty extends Component {
       imageBase64: "",
       descHTML: "",
       descMarkdown: "",
+
+      id: this.props.match.params.id
     };
   }
 
-  async componentDidMount() {}
+  async componentDidMount() {
+    try {
+      if (
+        this.props.match &&
+        this.props.match.params &&
+        this.props.match.params.id
+      ) {
+        const res = await getAllSpecialty();
+        if (res && res.info.errCode === 0) {
+          const id = this.props.match.params.id;
+          const specialty = res.info.data.filter((spe) => spe.id === +id);
+          if (specialty) {
+            this.setState({
+              name: specialty[0].name,
+              imageBase64: "",
+              descHTML: specialty[0].descHTML,
+              descMarkdown: specialty[0].descMarkdown,
+            });
+          }
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.language !== prevProps.language) {
@@ -59,9 +84,10 @@ class ManageSpecialty extends Component {
   };
 
   handleSaveNewSpecialty = async () => {
-    let res = await postNewSpecialty(this.state);
+    let res = await editSpecialty(this.state);
     if (res && res.info.errCode === 0) {
-      toast.success("Create specialty succeed");
+      toast.success("Edit specialty succeed");
+      this.props.history.push(`list-specialty`);
       this.setState({
         name: "",
         imageBase64: "",
@@ -81,9 +107,10 @@ class ManageSpecialty extends Component {
       <>
         <div className="manage-specialty">
           <div className="title">Manage Specialty</div>
+
           <div className="add-new-specialty">
             {/* <button className="btn btn-primary">Add new Specialty</button> */}
-            <h4>Add a new specialty</h4>
+            <h4>Edit a specialty</h4>
             <div className="row">
               <div className="col-6 form-group">
                 <label>Name specialty</label>
@@ -113,7 +140,7 @@ class ManageSpecialty extends Component {
                 className="btn btn-primary btn-save"
                 onClick={() => this.handleSaveNewSpecialty()}
               >
-                SAVE
+                Edit
               </button>
             </div>
           </div>
@@ -133,4 +160,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageSpecialty);
+export default connect(mapStateToProps, mapDispatchToProps)(EditSpecialty);
