@@ -35,7 +35,7 @@ class PopularDoctor extends Component {
   };
 
   render() {
-    // console.log("check top doctor", this.props.topDoctorRedux);
+    // console.log("check top doctor", this.props);
     let allDoctors = this.state.arrDoctors;
     let { language } = this.props;
     // console.log("<<check all doctor", allDoctors);
@@ -81,7 +81,6 @@ class PopularDoctor extends Component {
                         style={{ backgroundImage: `url(${imageBase64})` }}
                       ></div>
                       <div>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
-                      {/* <p>Bệnh viện nhà tao</p> */}
                     </div>
                   );
                 })}

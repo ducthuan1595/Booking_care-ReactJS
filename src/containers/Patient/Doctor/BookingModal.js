@@ -127,11 +127,12 @@ class BookingModal extends Component {
       toast.success("Book a new appointment succeed!");
       this.props.isCloseModal();
     } else {
+      toast.error("Book a new appointment error!");
       this.setState({
         isShowLoading: false,
       });
-      toast.error("Book a new appointment error!");
     }
+    console.log('Hello');
   };
 
   capitalizeFirstLetter = (string) => {

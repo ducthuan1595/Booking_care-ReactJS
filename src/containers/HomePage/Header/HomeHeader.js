@@ -6,6 +6,7 @@ import { FormattedMessage } from "react-intl"; //format language
 import { LANGUAGES } from "../../../utils"; //type language
 import * as actions from "../../../store/actions"; //actions of redux
 import { getTopDoctorHomeService } from "../../../services/userService";
+import { withRouter } from "react-router";
 
 import { changeLanguageApp } from "../../../store/actions/appActions"; //redux language
 
@@ -14,6 +15,7 @@ class HomeHeader extends Component {
     super(props);
     this.state = {
       listDoctors: [],
+      showListDoctors: [],
       inputValue: "",
       isShowAllDoctors: false,
     };
@@ -22,24 +24,28 @@ class HomeHeader extends Component {
   async componentDidMount() {
     this.getAllDoctor();
   }
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevState.inputValue !== this.state.inputValue) {
+      console.log(this.state.listDoctors);
       let remainingDoctor = this.state.listDoctors.filter((item) => {
-        if (item.label.toLowerCase().includes(this.state.inputValue)) {
+        if (item.firstName.toLowerCase().includes(this.state.inputValue) ||
+          item.lastName.toLowerCase().includes(this.state.inputValue)
+        ) {
           return item;
         }
       });
       this.setState({
-        listDoctors: remainingDoctor,
+        showListDoctors: remainingDoctor,
       });
     }
   }
 
   getAllDoctor = async () => {
     let res = await getTopDoctorHomeService("");
-    let dataSelect = this.buildDataInputSelect(res.data);
+    // let dataSelect = this.buildDataInputSelect(res.data);
     this.setState({
-      listDoctors: dataSelect,
+      listDoctors: res.data,
     });
   };
 
@@ -70,22 +76,22 @@ class HomeHeader extends Component {
 
   handleInputSearchDoctor = (e) => {
     let inputValue = e.target.value;
-    let remainingDoctor = this.state.listDoctors.filter((item) => {
-      if (item.label.toLowerCase().includes(inputValue)) {
-        return item;
-      }
+    this.setState({
+    inputValue: inputValue,
+    isShowAllDoctors: true,
     });
-    // console.log('name doctor', remainingDoctor)
-      this.setState({
-        listDoctors: remainingDoctor,
-        inputValue: inputValue,
-        isShowAllDoctors: true,
-      });
   };
+
+  // Detail doctor
+  handleDetailDoctor = (id) => {
+    if(this.props.history) {
+      this.props.history.push(`/detail-doctor/${id}`);
+    }
+  }
 
   render() {
     let { language, allDoctors } = this.props.language;
-    let { listDoctors, isShowAllDoctors, inputValue } = this.state;
+    let { showListDoctors, isShowAllDoctors, inputValue } = this.state;
     // console.log("check state", this.state);
     return (
       <>
@@ -180,7 +186,7 @@ class HomeHeader extends Component {
               </p>
             </div>
             <div id="search-modal">
-            <div className="home-search">
+            <div className="home-search" onClick={() => this.setState({ showListDoctors: showListDoctors && false })}>
               <i className="fas fa-search"></i>
               {/* change placelhoder language */}
               <FormattedMessage id="banner.find-doctor">
@@ -195,12 +201,13 @@ class HomeHeader extends Component {
               </FormattedMessage>
             </div>
             <ul className="home-search-modal">
-              {listDoctors &&
+              {showListDoctors &&
                 isShowAllDoctors === true &&
-                listDoctors.map((item, index) => {
+                showListDoctors.map((item, index) => {
+                  console.log(item);
                   return (
-                    <li key={index}>
-                      {item.role} {item.label}
+                    <li key={item.id} onClick={() => this.handleDetailDoctor(item.id)}>
+                      {language = LANGUAGES.EN ? item.positionData.value_en : item.positionData.value_vi} {item.firstName} {item.lastName}
                     </li>
                   );
                 })}
@@ -256,6 +263,7 @@ const mapStateToProps = (state) => {
     isLoggedIn: state.user.isLoggedIn,
     language: state.app.language,
     userInfo: state.user.userInfo,
+    topDoctorRedux: state.admin.topDoctors,
     allDoctors: state.admin.allDoctors,
   };
 };
@@ -267,4 +275,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader); //connection redux and react
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader)); //connection redux and react

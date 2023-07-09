@@ -22,6 +22,11 @@ class IntlProviderWrapper extends Component {
             <IntlProvider
                 locale={language}
                 messages={messages[language]}
+                onError={(error) => { 
+                    if(error) {
+                        console.log(error);
+                    }
+                 }}
                 defaultLocale="vi">
                 {children}
             </IntlProvider>

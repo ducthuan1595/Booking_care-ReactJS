@@ -13,6 +13,10 @@
 .home-footer {
   background-color: #65aeb5;
   padding: 20px;
+  // position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   // text-align: bottom;
   .footer-content {
     display: flex;
